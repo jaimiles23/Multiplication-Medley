@@ -2,17 +2,19 @@
 
 
 # Multiplication Medley
-Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and practice their multiplication tables in Free Play or play Survival Mode or Speed Challenge. After collecting enough data, the skill designs a Custom Practice for the user to improve their times tables. [Link to Multiplication Medley in Amazon Marketplace.](https://www.amazon.com/jaimiles23-Multiplication-Medley/dp/B0899VVC7M/ref=sr_1_1?dchild=1&keywords=multiplication+medley&qid=1592459984&s=digital-skills&sr=1-1)
+Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and practice their multiplication tables in Free Play or play Survival Mode or Speed Challenge. After sufficient data is collected, the skill designs a Custom Practice for the user to improve their times tables. 
+
+[Link to Multiplication Medley in Amazon Marketplace.](https://www.amazon.com/jaimiles23-Multiplication-Medley/dp/B0899VVC7M/ref=sr_1_1?dchild=1&keywords=multiplication+medley&qid=1592459984&s=digital-skills&sr=1-1)
 
 
 ## Directory
 1. 0_planning
    1. Documents related to the skill planning and design.
-2. Code
+2. 1_code
    1. All code required to deploy the skill.
-3. Interaction Model
+3. 2_interaction_model
    1. JSON data file used to train skill neural net.
-4. Distribution
+4. 3_distribution
    1. Documents for the distribution of the skill.
 
 
@@ -20,7 +22,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 Below are major changes to be implemented.
 
 ### Re-structure wrong_quest_by_date dict.
-Multiplication Medley currently saves the times tables that users get incorrect as a session attribute in the `wrong_quest_by_date` dictionary.
+Multiplication Medley saves the times tables that users answer incorrectly in the `wrong_quest_by_date` dictionary, a session attribute.
 
 ```python3
 wrong_quest_by_date = {
@@ -41,17 +43,19 @@ wrong_quest_by_date = {
     }
 }
 ```
+
 The nested dictionary keys and values are as follow:
 - `date`: str, ISO-formatted
 - `table_1`: int, 1st number of times table
 - `table_2`: int, 2nd number of times table
-- `int_incorrect`: int, number of times user answered incorrectly.
+- `int_incorrect`: int, number of times user answered incorrectly
 
 
-There are _2 issues_ with this nested dictionary data structure. 
+There are _2 challenges_ with this nested dictionary data structure. 
 
 1. **Repetitive dictionay keys between dates**. 
-For instance, a user may mess up the question 9 x 6 on two separate dates. The resulting dictionary would look similar to this.
+
+When a user incorrectly answers the question 9 x 6 on two separate dates, the resulting dictionary would like this:
 ```python3
 wrong_quest_by_date = {
     2020-06-18   :   {
@@ -66,7 +70,7 @@ wrong_quest_by_date = {
     }
 }
 ```
-This can be resolved by removing the date level from the dictionary. the only dictionay keys will be `table_1` and `table_2`. The `int_incorrect` value will instead be a list, `dates_incorrect`, which holds ISO-format string data representing the date that the user answered the question incorrect. The above sample dictionary will be stored as follows:
+This can be resolved by storing the dates as values instead of dictionary keys. The `int_incorrect` value will become to a list, `dates_incorrect`, that holds ISO-format string data representing the date that the user answered the question incorrect. The above sample dictionary will instead be stored as follows:
 ```python3
 wrong_quest_by_date = {
     9   :   {
@@ -75,10 +79,11 @@ wrong_quest_by_date = {
 }
 ```
 
-2. **Stored as a session attribute**.
-The `wrong_quest_by_date` dictionary is stored as session attribute level and is _not_ assigned to a player profile. Thus, during Custom Practice the `wrong_quest_by_date` does not distinguish players. This can be fixed by storing the `wrong_quest_by_date` dictionary as an instance attribute of the player class.
+1. **Stored as a session attribute**.
+
+The `wrong_quest_by_date` dictionary is stored as session attribute level and is _not_ assigned to a player profile. Thus, Custom Practice does not distinguish the `wrong_quest_by_date` between players. This can be fixed by storing the `wrong_quest_by_date` dictionary as an instance attribute of the player class.
 
 
 ### Create, change, and delete user profiles
-Currently, users are only prompted to create a user profile during the initial launch of the skill. There are no options to change between profiles, delete existing profiles, or corresponding help menus for creating a new profile. These are features that need to be built into the user_profile library.
+Currently, users are only prompted to create a user profile during the initial launch of the skill. There are no options to change between profiles, delete existing profiles, or corresponding help menus for creating a new profile. These features need to be implemented in the user_profile library.
 
