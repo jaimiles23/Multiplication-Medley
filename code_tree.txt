@@ -1,0 +1,149 @@
+.
+├── act_descriptions
+│   ├── act_descript_utils.py
+│   ├── data.py
+│   └── handlers.py
+├── answer_response
+│   ├── calc_chance_from_excite_level.py
+│   ├── confirmation_utils.py
+│   ├── congrat_level.py
+│   ├── congrat_utils.py
+│   ├── data_confirm.py
+│   ├── data_congrat.py
+│   ├── data_incorrect.py
+│   └── incorrect_utils.py
+├── attr_mngment
+│   ├── persist_attr_manager.py
+│   └── sesh_attr_manager.py
+├── aux_data
+│   ├── SSML_tags.py
+│   ├── skill_data.py
+│   └── std_tuple_lists.py
+├── aux_utils
+│   ├── create_tuple_message_clauses.py
+│   ├── last_prompt.py
+│   ├── list_to_speech.py
+│   ├── punct_util.py
+│   ├── thanks.py
+│   ├── time_encoder.py
+│   ├── try_saying.py
+│   └── z_score.py
+├── check_answer
+│   ├── answer_speech.py
+│   ├── data.py
+│   ├── handlers.py
+│   ├── question_checker.py
+│   └── record_wrong.py
+├── custom_practice
+│   ├── cp_attr.py
+│   ├── cp_pract_end.py
+│   ├── cp_utils.py
+│   ├── data.py
+│   ├── handlers.py
+│   ├── pract_intro.py
+│   ├── practice_type.py
+│   └── welcome_utils.py
+├── exceptions
+│   ├── data.py
+│   └── exception_utils.py
+├── exit_skill
+│   ├── data.py
+│   ├── exit_utils.py
+│   └── handler.py
+├── fallback
+│   ├── data.py
+│   ├── fallback_utils.py
+│   └── handler.py
+├── free_play
+│   ├── data.py
+│   ├── fp_attr.py
+│   ├── fp_clean_input.py
+│   ├── fp_logic.py
+│   ├── fp_num_questions.py
+│   ├── fp_prompts.py
+│   ├── fp_speech.py
+│   ├── fp_timestables.py
+│   ├── fp_upp_lower_bounds.py
+│   └── handlers.py
+├── function.zip
+├── helper
+│   ├── data.py
+│   ├── handler.py
+│   └── help_utils.py
+├── interceptors
+│   ├── cache_prompt.py
+│   ├── cache_response_int.py
+│   └── launch_intercept.py
+├── lambda_function.py
+├── launch
+│   ├── data.py
+│   ├── handlers.py
+│   └── launch_utils.py
+├── logs
+│   ├── __init__.py
+│   ├── log_all_args.py
+│   ├── log_decorators.py
+│   └── logger_init.py
+├── mult_questions
+│   ├── cp_question_by_type.py
+│   ├── cp_questions.py
+│   ├── data.py
+│   ├── data_cp.py
+│   ├── data_sm.py
+│   ├── fp_question.py
+│   ├── gen_questions.py
+│   ├── handlers.py
+│   ├── question_attr.py
+│   ├── question_messages.py
+│   ├── sc_questions.py
+│   └── sm_questions.py
+├── no_handler
+│   └── handlers.py
+├── pause
+│   ├── data.py
+│   └── pauser.py
+├── players
+│   ├── data.py
+│   ├── player_class.py
+│   ├── player_encoder.py
+│   └── players_dict.py
+├── repeat
+│   ├── data.py
+│   ├── handler.py
+│   └── repeat_utils.py
+├── requirements.txt
+├── skill_card
+│   ├── card_funcs.py
+│   └── data.py
+├── slots
+│   └── slot_utils.py
+├── speed_challenge
+│   ├── data.py
+│   ├── difficulty_utils.py
+│   ├── end_utils.py
+│   ├── handlers.py
+│   ├── sc_attr.py
+│   └── welcome_utils.py
+├── stats
+│   ├── data.py
+│   ├── data_speech.py
+│   ├── handlers.py
+│   ├── mode_speech_utils.py
+│   ├── mode_stats.py
+│   ├── session_stats.py
+│   └── user_stats.py
+├── survival_mode
+│   ├── data.py
+│   ├── endgame_utils.py
+│   ├── handlers.py
+│   ├── survival_attr.py
+│   └── welcome_utils.py
+├── user_profile
+│   ├── data.py
+│   ├── handlers.py
+│   └── user_profile_utils.py
+└── z_documentation
+    ├── design_choices.md
+    └── session_attributes.md
+
+27 directories, 119 files
