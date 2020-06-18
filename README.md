@@ -22,7 +22,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 Below are major changes to be implemented.
 
 ### Re-structure wrong_quest_by_date dict.
-Multiplication Medley saves the times tables that users answer incorrectly in the `wrong_quest_by_date` dictionary, a session attribute.
+Multiplication Medley saves the times tables that users answer incorrectly in the `wrong_quest_by_date` dictionary, a session attribute. The abstract data structure is shown below.
 
 ```python3
 wrong_quest_by_date = {
@@ -51,7 +51,7 @@ The nested dictionary keys and values are as follow:
 - `int_incorrect`: int, number of times user answered incorrectly
 
 
-There are _2 challenges_ with this nested dictionary data structure. 
+There are _2 challenges_ with this data structure. 
 
 1. **Repetitive dictionay keys between dates**. 
 
