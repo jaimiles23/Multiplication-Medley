@@ -18,6 +18,38 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
    1. Documents for the distribution of the skill.
 
 
+## Speech construction
+This skill uses **speech construction** to vary the prompts returned to the user. Speech construction creates a speech response by sampling sentence chunks (e.g., parts of speech, clauses, etc) from a series of linearly connected items.
+
+Consider the following noun phrase:
+> "The red dog"
+
+This sentence can parsed into 3 separate chunks:
+   1. "The": determiner
+   2. "red": colour adjective
+   3. "dog": animal noun
+
+Rather than hard coding "the red dog" as a response, speech construction samples from three different message tuples (MT).
+```python 3
+MT_DET = (
+    "The",
+    "A",
+)
+MT_COLOUR_JJ = (
+    "red",
+    "blue",
+    "yellow",
+)
+MT_ANIMAL_NN = (
+    "dog",
+    "cat",
+)
+```
+
+A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN). While speech construction requires careful consideration of sentence structure and semantics to avoid unnatural responses, successful implementation increases response variety multiplicatively. The speech construction for the above noun phrase yields 12 response permutations.
+
+
+
 ## Major changes to implement
 Below are major changes to be implemented.
 
