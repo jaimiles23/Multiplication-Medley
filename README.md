@@ -2,7 +2,7 @@
 
 
 # Multiplication Medley
-Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and practice their multiplication tables in Free Play or play Survival Mode or Speed Challenge. After sufficient data is collected, the skill designs a Custom Practice for the user to improve their times tables. 
+Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and practice their multiplication tables in Free Play, or play Survival Mode or Speed Challenge. After sufficient data is collected, the skill designs a Custom Practice for the user to improve their times tables. 
 
 [Link to Multiplication Medley in Amazon Marketplace.](https://www.amazon.com/jaimiles23-Multiplication-Medley/dp/B0899VVC7M/ref=sr_1_1?dchild=1&keywords=multiplication+medley&qid=1592459984&s=digital-skills&sr=1-1)
 
@@ -11,7 +11,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 1. 0_planning
    1. Documents related to the skill planning and design.
 2. 1_code
-   1. All code required to deploy the skill.
+   1. Code required to deploy the skill.
 3. 2_interaction_model
    1. JSON data file used to train skill neural net.
 4. 3_distribution
@@ -19,7 +19,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 
 
 ## Speech construction
-This skill uses **speech construction** to vary the prompts returned to the user. Speech construction creates a speech response by sampling sentence chunks (e.g., parts of speech, clauses, etc) from a series of linearly connected items.
+This skill uses **speech construction** to dynamically generate the prompts returned to the user. Speech construction generates a speech response by sampling sentence chunks (e.g., clauses, parts of speech, etc) from a series of linearly connected tuples.
 
 Consider the following noun phrase:
 > "The red dog"
@@ -29,7 +29,7 @@ This sentence can parsed into 3 separate chunks:
    2. "red": colour adjective
    3. "dog": animal noun
 
-Rather than hard coding "the red dog" as a response, speech construction samples from three different message tuples (MT).
+Rather than hard coding "the red dog" as a response, speech construction methods sample from the following three message tuples (MT).
 ```python 3
 MT_DET = (
     "The",
@@ -46,8 +46,7 @@ MT_ANIMAL_NN = (
 )
 ```
 
-A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN). While speech construction requires careful consideration of sentence structure and semantics to avoid unnatural responses, successful implementation increases response variety multiplicatively. The speech construction for the above noun phrase yields 12 response permutations.
-
+A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN). Speech construction requires careful consideration of sentence structure and semantics to avoid unnatural responses. However, successful implementation increases response variety multiplicatively. The speech construction for the above noun phrase yields 12 response permutations.
 
 
 ## Major changes to implement
@@ -87,7 +86,7 @@ There are _2 challenges_ with this data structure.
 
 1. **Repetitive dictionay keys between dates**. 
 
-When a user incorrectly answers the question 9 x 6 on two separate dates, the resulting dictionary would like this:
+When a user incorrectly answers the question 9 x 6 on two separate dates, the resulting dictionary appears:
 ```python3
 wrong_quest_by_date = {
     2020-06-18   :   {
@@ -102,7 +101,7 @@ wrong_quest_by_date = {
     }
 }
 ```
-This can be resolved by storing the dates as values instead of dictionary keys. The `int_incorrect` value will become to a list, `dates_incorrect`, that holds ISO-format string data representing the date that the user answered the question incorrect. The above sample dictionary will instead be stored as follows:
+The key overlap can be resolved by storing the dates as values instead of dictionary keys. The `int_incorrect` value should instead be a list, `dates_incorrect`, that holds ISO-format string data representing the date that the user answered the question incorrect. The above sample dictionary should be stored as followed instead:
 ```python3
 wrong_quest_by_date = {
     9   :   {
