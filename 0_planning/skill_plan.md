@@ -8,7 +8,6 @@ This document details the first-stage planning for my Multiplication Medley skil
 
 
 ## Purpose
-Purpose:
 > provide a fun, engaging platform for users to practice their multiplication tables.
 
 ## Domain
