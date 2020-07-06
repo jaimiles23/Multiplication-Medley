@@ -22,8 +22,8 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
    1. Documents for the distribution of the skill.
 
 
-## Dynamic Speech construction
-This skill uses **dynamic speech construction** to generate the prompts returned to the user. Dynamic peech construction generates a speech response by sampling sentence chunks (e.g., clauses, parts of speech, etc) from a series of linearly connected tuples.
+## Dynamic speech construction
+This skill uses **dynamic speech construction** to generate the prompts returned to the user. Dynamic speech construction generates a speech response by sampling sentence chunks (e.g., clauses, parts of speech, etc) from a series of linearly connected tuples.
 
 Consider the following arbitrary noun phrase:
 > "The red dog"
