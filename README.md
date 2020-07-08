@@ -22,18 +22,18 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
    1. Documents for the distribution of the skill.
 
 
-## Dynamic speech construction
-This skill uses **dynamic speech construction** to generate the prompts returned to the user. Dynamic speech construction generates a speech response by sampling sentence chunks (e.g., clauses, parts of speech, etc) from a series of linearly connected tuples.
+## Natural language generation
+This skill utilizes natural language generation (NLG) to transform  linearly connected sentence chunks (e.g., clauses, parts of speech, etc.) into speech responses. 
 
 Consider the following arbitrary noun phrase:
 > "The red dog"
 
-This sentence can parsed into 3 separate chunks:
+This phrase can parsed into 3 separate chunks:
    1. "The": determiner
    2. "red": colour adjective
    3. "dog": animal noun
 
-In this example, the color and animal are excessive details with no effect on the meaning of the response. Rather than hard coding "the red dog", dynamic speech construction samples from the following three message tuples (MT). A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN).
+In this example, the determiner, adjective, and noun have no effect on the meaning of the response. As such, we can use NLG to generate an arbitrary noun phrase. This skill's NLG samples from the following three message tuples (MT). A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN).
 ```python 3
 MT_DET = (
     "The",
