@@ -69,8 +69,8 @@ Free Play mode is used for general practice, where users can free practice multi
 #### Custom Practice 
 This mode asks users questions based on the metrics collected about them. Practice is structured from 4 differnet activities:
   1. **Recent errors**: correct recent questions.
-  2. **High error tables**: if user mistakes a table past a certian threshold.
-  3. **High frequency errors**: if user messes up a table more often than others.
+  2. **High error tables**: if user mistakes a table past a certain threshold.
+  3. **High relative errors**: if user messes up a table more often than others.
   4. **New tables**: Recommend practicing a questions above average times table.
 
 NOTE: thresholds are subject to change.
@@ -114,7 +114,7 @@ Users must correctly answer a number of questions sampled from the range. The ti
 #### Survival Mode
 Survival Mode tracks how many multiplication questions the user can answer without making a mistake. 
 
-Questions are scaled upward with Gaussian distribution.
+Questions are sampled from sliding Gaussian distribution.
 
 **Mode features**
 - Tracks personal record (number answered), and average & std of the last 15 attempts.
