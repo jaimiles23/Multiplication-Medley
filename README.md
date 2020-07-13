@@ -2,7 +2,7 @@
 
 
 # Multiplication Medley
-Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and can then play 4 different multiplication activities:
+Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and then play 4 different multiplication activities:
 1. Free Play
 2. Custom Practice
 3. Survival Mode
@@ -39,10 +39,10 @@ Questions are randomly generated from within the specified range.
 After collecting enough data on the user, the skill designs a customized practice for them. It analyzes usre data to ask questions from:
   1. **Recent errors**: correct recent questions.
   2. **High error tables**: if user mistakes a table past a certain threshold.
-  3. **High relative errors**: if user messes up a table more often than others(1).
+  3. **High relative errors**: if user messes up a table more often than others (a).
   4. **New tables**: times tables above the user's average difficulty.
 
-(1) To determine high relative errors, individual multiplication table errors are standardized into z-scores and users are asked tables whose z-score are _X_ standard deviations above the average error.
+(a) To determine high relative errors, individual multiplication table errors are standardized into z-scores and users are asked tables whose z-score are _X_ standard deviations above the average error.
 
 
 ### Survival mode
