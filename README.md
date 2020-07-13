@@ -77,7 +77,7 @@ This phrase can be parsed into 3 separate chunks:
    2. "red": colour adjective
    3. "dog": animal noun
 
-In this example, the determiner, adjective, and noun have no effect on the meaning of the response. As such, we can use NLG to generate an arbitrary noun phrase. This skill's NLG samples from the following three message tuples (MT). A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN).
+In this example, the determiner, adjective, and noun have no effect on the meaning of the response. As such, we can use naive NLG to create an arbitrary noun phrase. This skill's NLG samples from the following three message tuples (MT). A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN).
 ```python 3
 MT_DET = (
     "The",
@@ -99,7 +99,7 @@ Dynamic speech construction requires careful consideration of sentence structure
 ## Major changes to implement
 ![](https://user-images.githubusercontent.com/50056791/87263220-52ef8980-c471-11ea-92f0-a5d1ac830eda.gif)
 
-I have a daunting backlog of features and qol improvements saved to my desktop. Let's ignore those and focus on these major changes to implement.
+I have a daunting backlog of features and quality of life improvements saved to my desktop. I will ignore those and instead focus on implementing the following major changes.
 
 ### Re-structure wrong_quest_by_date dict.
 Multiplication Medley saves the times tables that users answer incorrectly in the `wrong_quest_by_date` dictionary, a session attribute. The abstract data structure is shown below.
@@ -166,4 +166,3 @@ The `wrong_quest_by_date` dictionary is stored as session attribute (i.e., JSON 
 
 ### Create, change, and delete user profiles
 Currently, users are only prompted to create a user profile during the initial launch of the skill. There are no options to change between profiles, delete existing profiles, or corresponding help menus for creating a new profile. These features need to be implemented in the user_profile library.
-
