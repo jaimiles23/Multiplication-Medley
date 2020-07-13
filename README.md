@@ -2,7 +2,7 @@
 
 
 # Multiplication Medley
-Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and then play 4 different multiplication activities:
+Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and play 4 different multiplication activities:
 1. Free Play
 2. Custom Practice
 3. Survival Mode
@@ -23,32 +23,28 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 
 
 ## Activities
-Multiplication Medley tracks user statistics across all modes, including the questions that users get wrong. Additionally, the skills tracks user scores for the two competitive modes: (1) Survival Mode and (2) Speed Challenge. Mode statistics are referenced when constructing messages for ending the activity.
+Multiplication Medley tracks user answer statistics and high scores for the two competitive modes: (1) Survival Mode and (2) Speed Challenge. Mode statistics are referenced when constructing messages for ending the activity.
 
 
 ### Free play
-Users practice the multiplication tables they way they want. Users can pick:
-- multiple tables or a range of tables to practice from
+Users practice set up the multiplication tables they want to practice. They select:
+- the tables to answer questions from
 - an upper and lower limit for their tables (optional)
 - a number of questions to practice (optional)
 
-Questions are randomly generated from within the specified range.
-
 
 ### Custom practice
-After collecting enough data on the user, the skill designs a customized practice for them. It analyzes usre data to ask questions from:
-  1. **Recent errors**: correct recent questions.
-  2. **High error tables**: if user mistakes a table past a certain threshold.
-  3. **High relative errors**: if user messes up a table more often than others (a).
+After collecting enough data on the user, the skill designs a customized practice for them. The custom practice has 4 components:
+  1. **Recent errors**: the user corrects recent errors.
+  2. **High error tables**: users practice tables with more mistakes than an accepted threshold.
+  3. **High relative errors**: users practice tables they mess up more often than others (a).
   4. **New tables**: times tables above the user's average difficulty.
 
-(a) To determine high relative errors, individual multiplication table errors are standardized into z-scores and users are asked tables whose z-score are _X_ standard deviations above the average error.
+(a) To determine high relative errors, individual multiplication table errors are standardized into z-scores and users are asked tables with high mistake z-scores.
 
 
 ### Survival mode
 Survival Mode tracks how many multiplication questions the user can answer without making a mistake. 
-
-Questions are sampled from sliding Gaussian distribution.
 
 
 ### Speed challenge
@@ -77,7 +73,7 @@ This phrase can be parsed into 3 separate chunks:
    2. "red": colour adjective
    3. "dog": animal noun
 
-In this example, the determiner, adjective, and noun have no effect on the meaning of the response. As such, we can use naive NLG to create an arbitrary noun phrase. This skill's NLG samples from the following three message tuples (MT). A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN).
+In this example, the determiner, adjective, and noun have no effect on the meaning of the response. We can use naive NLG to create an arbitrary noun phrase. This skill's NLG method would sample from the following three message tuples (MT). A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN).
 ```python 3
 MT_DET = (
     "The",
@@ -93,7 +89,7 @@ MT_ANIMAL_NN = (
     "cat",
 )
 ```
-Dynamic speech construction requires careful consideration of sentence structure and semantics to avoid unnatural responses. However, successful implementation increases response variety multiplicatively. The speech construction for the above noun phrase yields 12 response permutations.
+This NLG method requires careful consideration of sentence structure and semantics to avoid unnatural responses. However, successful implementation increases response variety multiplicatively. The speech construction for the above noun phrase yields 12 response permutations.
 
 
 ## Major changes to implement
