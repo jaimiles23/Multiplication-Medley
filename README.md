@@ -23,7 +23,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 
 
 ## Activities
-Multiplication Medley tracks user answer statistics and high scores for the two competitive modes: (1) Survival Mode and (2) Speed Challenge. Mode statistics are referenced when constructing messages for ending the activity.
+Multiplication Medley tracks user answer statistics and user high scores for the two competitive modes: (1) Survival Mode and (2) Speed Challenge. Mode statistics are referenced when constructing messages for ending the activity.
 
 
 ### Free play
@@ -98,7 +98,9 @@ This NLG method requires careful consideration of sentence structure and semanti
 I have a daunting backlog of features and quality of life improvements saved to my desktop. I will ignore those and instead focus on implementing the following major changes.
 
 ### Re-structure wrong_quest_by_date dict.
-Multiplication Medley saves the times tables that users answer incorrectly in the `wrong_quest_by_date` dictionary, a session attribute. The abstract data structure is shown below.
+Multiplication Medley saves the times tables that users answer incorrectly in the `wrong_quest_by_date` dictionary, a session attribute. Questions are saved under the date that the user answered it incorrectly. This makes it easy to remove questions that are no longer pertinent to the user, e.g., if the user missed it 2 weeks ago.
+
+The abstract data structure is shown below.
 
 ```python3
 wrong_quest_by_date = {
@@ -129,9 +131,9 @@ The nested dictionary keys and values are as follow:
 
 There are _2 challenges_ with this data structure. 
 
-1. **Repetitive dictionay keys between dates**. 
+1. **Repetitive dictionary keys between dates**. 
 
-When a user incorrectly answers the question 9 x 6 on two separate dates, the resulting dictionary appears:
+If a user answers the question 9 x 6 on two separate dates, the `wrong_quest_by_date` assumes the following data structure:
 ```python3
 wrong_quest_by_date = {
     2020-06-18   :   {
