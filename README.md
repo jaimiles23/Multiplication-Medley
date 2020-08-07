@@ -1,6 +1,3 @@
-![.](https://user-images.githubusercontent.com/50056791/84987459-06749080-b0f5-11ea-864b-19ef43dd6664.jpg)
-
-
 # Multiplication Medley
 Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and play 4 different multiplication activities:
 1. Free Play
@@ -22,7 +19,11 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
   - Documents pertaining to the distribution of the skill in the [Amazon Marketplace.](https://www.amazon.com/jaimiles23-Multiplication-Medley/dp/B0899VVC7M/ref=sr_1_1?dchild=1&keywords=multiplication+medley&qid=1592459984&s=digital-skills&sr=1-1)
 
 
-## Activities
+### 1_code navigation
+Application code is deployed via AWS Lambda. Lambda accesses the skill builder stored in the `lambda_function.py` file, and selects the appropriate skill handler to process the user's request. Handlers are built in 1_code subdirectories.
+
+
+## Skill activities
 Multiplication Medley tracks user answer statistics and user high scores for the two competitive modes: (1) Survival Mode and (2) Speed Challenge. Mode statistics are referenced when constructing messages for ending the activity.
 
 
@@ -60,10 +61,49 @@ Speed mode tracks how quickly the user can complete a series of multiplication q
 Users must correctly answer a number of questions sampled from the range. Time is tracked from the beginning of the mode until the user answers the last problem.
 
 
-## Natural language generation
+## Voice User Interface
+Alexa applications utilize a Voice User Interface (VUI) and thus frontend development differs from standard development for Graphical User Interfaces. To interact with the user, Alexa employs two areas of natural language processing:
+1. natural language understanding
+2. natural language generation
+
+
+### Natural language understanding
+Applications train Alexa's neural net to assign user utterances to application specific intents. The neural net is trained with 3 pieces of information for each intent:
+1. Intent Name
+2. Slots
+3. Sample Utterances
+
+Intent slots represent specific information that the user must provide for each intent. For instance, if the user wants to start Speed Challenge on easy difficulty, they must
+provide the 'easy' slot in their intent. A sample utterance follows:
+> "Start Speed Challenge on easy difficulty."
+
+The following code block shows the training data for the Speed Challenge Intent.
+```json
+"name": "StartSpeedChallengeIntent",
+    "slots": [
+        {
+            "name": "difficulty",
+            "type": "sc_difficulty"
+        }
+    ],
+    "samples": [
+        "play speed challenge",
+        "play speed challenge with {difficulty}",
+        "Begin speed challenge with {difficulty}",
+        "speed challenge with {difficulty}",
+        "start speed challenge with {difficulty} difficulty",
+        "begin speed challenge",
+        "start speed challenge"
+    ]
+```
+
+Neural net training information is held in the skill's **interaction_model** json file.
+
+
+### Natural language generation
 ![](https://user-images.githubusercontent.com/50056791/87263264-7ca8b080-c471-11ea-92de-00a7b3644027.png)
 
-This skill utilizes natural language generation (NLG) to transform  linearly connected sentence chunks (e.g., clauses, parts of speech, etc.) into speech responses. 
+This skill utilizes natural language generation (NLG) to interact with the user. The naive method transforms linearly connected sentence chunks (e.g., clauses, parts of speech, etc.) into speech responses. 
 
 Consider the following arbitrary noun phrase:
 > "The red dog"
@@ -90,6 +130,8 @@ MT_ANIMAL_NN = (
 )
 ```
 This NLG method requires careful consideration of sentence structure and semantics to avoid unnatural responses. However, successful implementation increases response variety multiplicatively. The speech construction for the above noun phrase yields 12 response permutations.
+
+Data for each NLG method is located in each subdirectory's `data` module.
 
 
 ## Major changes to implement
