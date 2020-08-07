@@ -9,6 +9,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 
 
 ## Directory
+
 - 0_planning
   - Documents related to the skill planning and design.
 - 1_code
@@ -20,12 +21,10 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 
 
 ### 1_code navigation
-Application code is deployed via AWS Lambda. Lambda accesses the skill builder stored in the `lambda_function.py` file, and selects the appropriate skill handler to process the user's request. Handlers are built in 1_code subdirectories.
+Application code is deployed via AWS Lambda. A user Alexa request triggers the lambda function which accesses the skill builder stored in the `lambda_function.py` file. The skill builder selects the appropriate handler to process the user's request.
 
 
 ## Skill activities
-Multiplication Medley tracks user answer statistics and user high scores for the two competitive modes: (1) Survival Mode and (2) Speed Challenge. Mode statistics are referenced when constructing messages for ending the activity.
-
 
 ### Free play
 Users practice set up the multiplication tables they want to practice. They select:
@@ -35,11 +34,11 @@ Users practice set up the multiplication tables they want to practice. They sele
 
 
 ### Custom practice
-After collecting enough data on the user, the skill designs a customized practice for them. The custom practice has 4 components:
-  1. **Recent errors**: the user corrects recent errors.
-  2. **High error tables**: users practice tables with more mistakes than an accepted threshold.
-  3. **High relative errors**: users practice tables they mess up more often than others (a).
-  4. **New tables**: times tables above the user's average difficulty.
+Multiplication Medley designs a customized practice for the user based on their answer statistics. The custom practice has 4 components:
+  1. *Recent errors*: users correct recent errors
+  2. *High error tables*: users practice tables with more mistakes than an accepted threshold
+  3. *High relative errors*: users practice tables they mess up more often than others (a)
+  4. *New tables*: times tables above the user's average difficulty
 
 (a) To determine high relative errors, individual multiplication table errors are standardized into z-scores and users are asked tables with high mistake z-scores.
 
@@ -58,7 +57,7 @@ Speed mode tracks how quickly the user can complete a series of multiplication q
 |   Advanced  |   10  |   20    |
 |   Insane    |   20  |   30    |
 
-Users must correctly answer a number of questions sampled from the range. Time is tracked from the beginning of the mode until the user answers the last problem.
+Users answer a number of questions sampled from the range. Time is tracked from the beginning of the mode until the user answers the last problem.
 
 
 ## Voice User Interface
@@ -68,16 +67,16 @@ Alexa applications utilize a Voice User Interface (VUI) and thus frontend develo
 
 
 ### Natural language understanding
-Applications train Alexa's neural net to assign user utterances to application specific intents. The neural net is trained with 3 pieces of information for each intent:
+Skills train Alexa's neural net to assign user utterances to specific intents. The neural net is trained with 3 pieces of information for each intent:
 1. Intent Name
-2. Slots
-3. Sample Utterances
+1. Slots
+1. Sample Utterances
 
-Intent slots represent specific information that the user must provide for each intent. For instance, if the user wants to start Speed Challenge on easy difficulty, they must
+Intent slots represent specific information for the specified intent. For instance, if the user wants to start Speed Challenge on easy difficulty, they must
 provide the 'easy' slot in their intent. A sample utterance follows:
 > "Start Speed Challenge on easy difficulty."
 
-The following code block shows the training data for the Speed Challenge Intent.
+The following code block shows the training data for the Start Speed Challenge Intent.
 ```json
 "name": "StartSpeedChallengeIntent",
     "slots": [
@@ -103,7 +102,7 @@ Neural net training information is held in the skill's **interaction_model** jso
 ### Natural language generation
 ![](https://user-images.githubusercontent.com/50056791/87263264-7ca8b080-c471-11ea-92de-00a7b3644027.png)
 
-This skill utilizes natural language generation (NLG) to interact with the user. The naive method transforms linearly connected sentence chunks (e.g., clauses, parts of speech, etc.) into speech responses. 
+This skill utilizes a naive natural language generation (NLG) to interact with the user. The method transforms linearly connected sentence chunks (e.g., clauses, parts of speech, etc.) into speech responses.
 
 Consider the following arbitrary noun phrase:
 > "The red dog"
