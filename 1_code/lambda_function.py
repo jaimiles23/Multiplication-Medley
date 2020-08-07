@@ -11,6 +11,7 @@
 ]*/
 """
 
+
 ##########
 # Imports
 ##########
@@ -41,6 +42,10 @@ skill_s3_adapter = S3Adapter(
 # Imports
 ##########
 
+from interceptors.cache_prompt import CacheRepromptInterceptor
+from interceptors.cache_response_int import CacheResponseForRepeatInterceptor
+from interceptors.launch_intercept import LaunchRequestInterceptor
+
 from exit_skill.handler import ExitHandler, SessionEndedRequestHandler, StopActivity
 from fallback.handler import FallbackHandler
 from helper.handler import HelpHandler
@@ -49,11 +54,6 @@ from repeat.handler import RepeatHandler
 
 from user_profile.handlers import CreateUserProfileHandler
 from act_descriptions.handlers import ActDescriptHandler
-
-from interceptors.cache_prompt import CacheRepromptInterceptor
-from interceptors.cache_response_int import CacheResponseForRepeatInterceptor
-from interceptors.launch_intercept import LaunchRequestInterceptor
-
 from stats.handlers import ModeStatsHandler
 
 from free_play.handlers import (

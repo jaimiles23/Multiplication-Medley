@@ -1,5 +1,7 @@
 @modify date 2020-05-25 17:33:17
+
 I chose to use a dictionary for each mode to account for the flat access structure of the skill. A user may pre-emptively exit one mode, e.g., FreePlay, and start another without exiting.
+
 By holding a dictionay for each mode, I don't have to continually call a method to update the session statistics if this occurs. Instead, I can call it once either when the user 
 provides a proper stop to an activity & i want to report their stats to them, or they exit the skill and I want to update session statistics for the exit message.
 
