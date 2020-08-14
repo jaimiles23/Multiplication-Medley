@@ -4,15 +4,56 @@
  * @create date 2020-05-06 15:10:52
  * @modify date 2020-06-16 15:11:39
  * @desc [
-     get_ms_from_tuple is an auxiliary function to create a message from a Master Message Tuple (MMT).
+     get_ms_from_tuple is a naive nlg method to create a message from clause tuples. 
+     The overall tuple containing other tuples is the Master Message Tuple (MMT).
 
      The MMT is a tuple of clauses that can be linearly sampled from to create a message. 
      Randomly sampling from each clause tuple creates variety in the user experience and maintains the meaning.
      
-     Refer to the discussion on Clause construction in the README.md
+     Refer to the example in the README below.
      
     NOTE: 
     - Consider is_instance(data, (tuple, list)) vs has_attr(__iter__)??
+
+
+    ##########
+    # README.md Example.
+    ##########
+
+    This skill utilizes a naive natural language generation (NLG) to interact with the user. 
+    The method transforms linearly connected sentence chunks (e.g., clauses, parts of speech, etc.) into speech responses.
+
+    Consider the following arbitrary noun phrase:
+
+    "The red dog"
+
+    This phrase can be parsed into 3 separate chunks:
+
+    "The": determiner
+    "red": colour adjective
+    "dog": animal noun
+    In this example, the determiner, adjective, and noun have no effect on the meaning of the response. 
+    We can use naive NLG to create an arbitrary noun phrase. This skill's NLG method would sample from the following three message tuples (MT). 
+    A single item is sampled from each message tuple to create the noun phrase (DET, JJ, NN).
+
+    MT_DET = (
+        "The",
+        "A",
+    )
+    MT_COLOUR_JJ = (
+        "red",
+        "blue",
+        "yellow",
+    )
+    MT_ANIMAL_NN = (
+        "dog",
+        "cat",
+    )
+    This NLG method requires careful consideration of sentence structure and semantics to avoid unnatural responses. 
+    However, successful implementation increases response variety multiplicatively. 
+    The speech construction for the above noun phrase yields 12 response permutations.
+
+    Data for each NLG method is located in each subdirectory's data module.
 ]*/
 """
 
