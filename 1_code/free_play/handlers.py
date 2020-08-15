@@ -61,7 +61,7 @@ import free_play.data
 
 
 ##########
-# SetUp
+# SetUp Handlers
 ##########
 
 class FP_StartHandler(AbstractRequestHandler):
@@ -380,55 +380,81 @@ class FP_ParametersHandler(AbstractRequestHandler):
 
 
 ##########
-# Answer
+# Answer Handlers
 ##########
 
-class FP_AnswerQuestionHandler(AbstractRequestHandler):
+class FP_CorrectAnswerHandler(AbstractRequestHandler):
+
    def can_handle(self, handler_input):
       attr = handler_input.attributes_manager.session_attributes
       return (
          attr.get('mode', None) == 'free_play' and
-         is_intent_name("AnswerIntent")(handler_input)
+         is_intent_name("AnswerIntent")(handler_input) and
+         QuestionChecker.check_answer(handler_input)
       )
    
    def handle(self, handler_input):
-      logger.info("HAN  FP_AnswerQuestionHandler")
+      logger.info("HAN  FP_CorrectAnswerHandler")
       speech_list = []
       
       player_obj = PlayerDict.load_player_obj(handler_input)
-      answer = SlotUtils.get_slot_val_by_name(handler_input, 'answer')
-      if not answer:
-         return FallbackUtils.return_unknown_slot_response(handler_input)
-
-      correct = QuestionChecker.check_answer(handler_input)
-      UserStats.update_player_stats(                     # so table always exists
-         handler_input, correct, player_obj= player_obj)
+      UserStats.update_player_stats(                     
+         handler_input, correct = True, player_obj= player_obj)
       
-      if correct:
+      ms_congrats = CongratUtils.get_answer_congrats(handler_input, player_obj= player_obj)
+      ms_question = FPQuestions.get_question(handler_input)
+      reprompt = FPQuestions.get_rephrased_question(handler_input)
 
-         ms_congrats = CongratUtils.get_answer_congrats(handler_input, player_obj= player_obj)
-         ms_question = FPQuestions.get_question(handler_input)
-         reprompt = FPQuestions.get_rephrased_question(handler_input)
+      logger.debug(ms_congrats)
 
-         logger.debug(ms_congrats)
-
-         if ms_congrats != "":
-            speech_list += Pauser.make_ms_pause_level_list(
-               ms_congrats, 1, ms_question)
-         else:
-            speech_list.append(ms_question)
-            
-      else:
-         WrongAnswer.record_wrong_question(handler_input)
-         ms_incorrect = IncorrectAnsUtils.get_buzz_and_incorrect()
-         ms_retry_question = AllQuestionIntros.get_retry_question(handler_input)
-         reprompt = GenQuestions.get_same_question(handler_input)
-
+      if ms_congrats != "":
          speech_list += Pauser.make_ms_pause_level_list(
-            ms_incorrect, 1, ms_retry_question)
+            ms_congrats, 1, ms_question)
+      else:
+         speech_list.append(ms_question)
       
-      SessionStats.update_consecutive_correct(handler_input, correct)
-      ModeStats.update_mode_stats(handler_input, correct)
+      SessionStats.update_consecutive_correct(handler_input, correct = True)
+      ModeStats.update_mode_stats(handler_input, correct = True)
+
+      logger.debug(speech_list)
+      speech = ' '.join(speech_list)
+      card_title = CardFuncs.get_card_title(handler_input)
+      card_text = CardFuncs.clean_card_text(speech)
+      return (
+         handler_input.response_builder
+            .speak(speech)
+            .ask(reprompt)
+            .set_card( SimpleCard( card_title, card_text))
+            .response)
+
+
+class FP_WrongAnswerHandler(AbstractRequestHandler):
+   def can_handle(self, handler_input):
+      attr = handler_input.attributes_manager.session_attributes
+      return (
+         attr.get('mode', None) == 'free_play' and
+         is_intent_name("AnswerIntent")(handler_input) and
+         not QuestionChecker.check_answer(handler_input)
+      )
+   
+   def handle(self, handler_input):
+      logger.info("HAN  FP_WrongAnswerHandler")
+      speech_list = []
+      
+      player_obj = PlayerDict.load_player_obj(handler_input)
+      UserStats.update_player_stats(                     
+         handler_input, correct = False, player_obj= player_obj)
+      
+      WrongAnswer.record_wrong_question(handler_input)
+      ms_incorrect = IncorrectAnsUtils.get_buzz_and_incorrect()
+      ms_retry_question = AllQuestionIntros.get_retry_question(handler_input)
+      reprompt = GenQuestions.get_same_question(handler_input)
+
+      speech_list += Pauser.make_ms_pause_level_list(
+         ms_incorrect, 1, ms_retry_question)
+      
+      SessionStats.update_consecutive_correct(handler_input, correct = False)
+      ModeStats.update_mode_stats(handler_input, correct = False)
 
       logger.debug(speech_list)
       speech = ' '.join(speech_list)
