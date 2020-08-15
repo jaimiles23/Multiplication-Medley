@@ -42,7 +42,7 @@ class CardFuncs(object):
         card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         
         return (card_title, card_text)
-        
+
 
     @staticmethod
     @log_func_name
@@ -72,8 +72,10 @@ class CardFuncs(object):
 
         card_text = card_text.replace('  ', ' ')
         logger.debug(f'cleaned text:    {card_text}')
+
+        card_text = CardFuncs.format_mult_operator(card_text)
         return card_text
-    
+
 
     @staticmethod
     @log_func_name
@@ -83,4 +85,31 @@ class CardFuncs(object):
         prompt_format = '\n' * 2
         return (prompt_format + prompt)
 
+
+    @staticmethod
+    @log_func_name
+    def format_mult_operator(card_text: str) -> str:
+        """Changes 'times' to 'x' for skillcard.
+
+        For pronunciation, Alexa speech, multiplication
+        questions must be formatted as 9 times 9.
+        This changes instances of 'times' to 'x'.
+        """
+        operator = " times "
+        mult_op_loc = card_text.find(operator)
+        if mult_op_loc == -1:
+            return card_text
+        
+        try:
+            digit_1_loc = mult_op_loc - 1
+            digit_2_loc = mult_op_loc + 1
+            int(card_text[digit_1_loc])
+            int(card_text[digit_2_loc])
+        
+        except (ValueError, IndexError):
+            logger.warning(f"mult operator not in equation: \n{card_text}")
+            return card_text
+        
+        card_text = card_text.replace(operator, " x ")
+        return card_text
 
