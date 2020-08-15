@@ -25,7 +25,7 @@ from logs import log_func_name, logger
 from aux_utils.last_prompt import LastPrompt
 from skill_card.card_funcs import CardFuncs
 from pause.pauser import Pauser
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from mult_questions.fp_question import FPQuestions
 from mult_questions.gen_questions import GenQuestions
 
@@ -45,7 +45,7 @@ class FallbackUtils(object):
         speech_list = []
         attr = handler_input.attributes_manager.session_attributes
         
-        ms_not_understand = get_ms_from_tuple( fallback.data.MMT_NOT_UNDERSTAND)
+        ms_not_understand = get_linear_nlg( fallback.data.MMT_NOT_UNDERSTAND)
         
         if attr.get('mode', None) == 'free_play':
             prompt, reprompt = (

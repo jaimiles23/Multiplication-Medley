@@ -19,7 +19,7 @@ from ask_sdk_core.handler_input import HandlerInput
 
 
 from logs import logger, log_func_name, log_all
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 
 from aux_data.SSML_tags import MW_EXCITED_LOW
 import custom_practice.data
@@ -56,7 +56,7 @@ class CP_Welcome(object):
     @log_func_name
     def get_ms_first_welcome() -> str:
         """Returns first welcome message for the user."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             custom_practice.data.MMT_FIRST_WELCOME)
     
 
@@ -64,7 +64,7 @@ class CP_Welcome(object):
     @log_func_name
     def get_ms_long_welcome() -> str:
         """Returns long welcome message to the user."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             custom_practice.data.MMT_LONG_WELCOME)
     
 
@@ -72,7 +72,7 @@ class CP_Welcome(object):
     @log_func_name
     def get_ms_short_welcome() -> str:
         """Returns short welcome message to the user."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             custom_practice.data.MMT_SHORT_WELCOME)
     
 
@@ -92,7 +92,7 @@ class CP_Welcome(object):
             1,
             custom_practice.data.MS_COME_BACK_AFTER
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
 

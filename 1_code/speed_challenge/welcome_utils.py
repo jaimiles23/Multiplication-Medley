@@ -18,7 +18,7 @@ import random
 
 
 from logs import log_func_name, logger, log_all
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from players.players_dict import PlayerDict
 from speed_challenge.end_utils import SC_EndGame
 
@@ -66,7 +66,7 @@ class SC_WelcomeUtils(object):
     @log_func_name
     def get_ms_first_welcome() -> str:
         """Returns welcome message for the first Speed Challenge play."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             speed_challenge.data.MMT_SC_FIRST_WELCOME)
     
 
@@ -74,7 +74,7 @@ class SC_WelcomeUtils(object):
     @log_func_name
     def get_ms_long_welcome() -> str:
         """Returns long form of welcome message for Speed Challenge."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             speed_challenge.data.MTT_LONG_WELCOME) + '?'
     
     
@@ -101,7 +101,7 @@ class SC_WelcomeUtils(object):
             speed_challenge.data.MT_BEAT_IT)
         
         speech_list = (ms_high_score, 1, ms_beat_it)
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
     
 
     @staticmethod
@@ -130,14 +130,14 @@ class SC_WelcomeUtils(object):
             speed_challenge.data.MT_BEAT_IT)
 
         speech_list = (ms_average_score, 1, ms_beat_it)
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
     
     
     @staticmethod
     @log_func_name
     def get_ms_short_welcome() -> str:
         """Returns short welcome message."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             speed_challenge.data.MTT_SHORT_WELCOME)
 
     

@@ -23,7 +23,7 @@ import random
 from logs import logger, log_func_name 
 from helper.help_utils import HelpUtils
 from pause.pauser import Pauser
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 
 import launch.data as data
 from aux_data.SSML_tags import MW_EXCITED_LOW
@@ -113,7 +113,7 @@ class LaunchUtils(object):
     @log_func_name
     def get_q_player_name() -> str:
         """Returns prompt asking for the player's name."""
-        return get_ms_from_tuple( data.MTT_FIRST_PLAYER_NAME)
+        return get_linear_nlg( data.MTT_FIRST_PLAYER_NAME)
 
 
     ##########
@@ -135,7 +135,7 @@ class LaunchUtils(object):
             1,
             q_todo
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod

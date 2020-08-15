@@ -4,7 +4,7 @@
  * @create date 2020-05-06 15:10:52
  * @modify date 2020-06-16 15:11:39
  * @desc [
-     get_ms_from_tuple is a naive nlg method to create a message from clause tuples. 
+     get_linear_nlg is a naive nlg method to create a message from clause tuples. 
      The overall tuple containing other tuples is the Master Message Tuple (MMT).
 
      The MMT is a tuple of clauses that can be linearly sampled from to create a message. 
@@ -77,7 +77,7 @@ from pause.pauser import Pauser
 ##########
 
 @log_func_name
-def get_ms_from_tuple(tuple_message_clause: tuple, str_joiner: str = ' ') -> str:
+def get_linear_nlg(tuple_message_clause: tuple, str_joiner: str = ' ') -> str:
     """Returns message constructed from tuple message clause.
     
     Constructs the message with different methods per data type.

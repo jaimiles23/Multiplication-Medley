@@ -18,7 +18,7 @@ import random
 
 
 from logs import log_func_name, logger
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from players.players_dict import PlayerDict
 
 
@@ -68,7 +68,7 @@ class SM_WelcomeUtils(object):
     @log_func_name
     def get_ms_first_welcome() -> str:
         """Returns welcome message for the first welcome."""
-        return (get_ms_from_tuple(
+        return (get_linear_nlg(
             survival_mode.data.MMT_FIRST_WELCOME))
 
 
@@ -76,7 +76,7 @@ class SM_WelcomeUtils(object):
     @log_func_name
     def get_ms_long_welcome() -> str:
         """Returns long-form of re-appearing welcome message."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             survival_mode.data.MMT_LONG_WELCOME,
             str_joiner= '')
 
@@ -118,7 +118,7 @@ class SM_WelcomeUtils(object):
     @log_func_name
     def get_ms_short_welcome() -> str:
         """Returns short welcome message for survival mode."""
-        return get_ms_from_tuple( 
+        return get_linear_nlg( 
             survival_mode.data.MMT_SHORT_WELCOME,
             str_joiner='')
 
@@ -136,5 +136,5 @@ class SM_WelcomeUtils(object):
             ". ",
             survival_mode.data.MT_BEAT_IT
             )
-        return get_ms_from_tuple( speech_list, str_joiner='')
+        return get_linear_nlg( speech_list, str_joiner='')
 

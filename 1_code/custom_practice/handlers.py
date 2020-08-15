@@ -32,7 +32,7 @@ from answer_response.confirmation_utils import ConfirmUtils
 from answer_response.congrat_utils import CongratUtils
 from answer_response.incorrect_utils import IncorrectAnsUtils
 from aux_utils.last_prompt import LastPrompt
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.thanks import get_ms_thanks
 from check_answer.question_checker import QuestionChecker
 from check_answer.record_wrong import WrongAnswer
@@ -113,7 +113,7 @@ class CP_StartHandler(AbstractRequestHandler):
                 question,
             )
 
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         reprompt = GenQuestions.get_same_question(handler_input)
         card_title = CardFuncs.get_card_title(handler_input)
         card_text = CardFuncs.clean_card_text(speech)   
@@ -168,7 +168,7 @@ class CP_CorrectAnswerHandler(AbstractRequestHandler):
         ModeStats.update_mode_stats(handler_input, True)
         PlayerDict.save_player_obj(handler_input, player_obj)
 
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         reprompt = GenQuestions.get_same_question(handler_input)
         card_title = CardFuncs.get_card_title(handler_input)
         card_text = CardFuncs.clean_card_text(speech)   
@@ -212,7 +212,7 @@ class CP_WrongAnswerHandler(AbstractRequestHandler):
         WrongAnswer.record_wrong_question(handler_input)
         PlayerDict.save_player_obj(handler_input, player_obj)
 
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         reprompt = GenQuestions.get_same_question(handler_input)
         card_title = CardFuncs.get_card_title(handler_input)
         card_text = CardFuncs.clean_card_text(speech)   
@@ -299,7 +299,7 @@ class CP_NextPracticeHandler(AbstractRequestHandler):
         ModeStats.update_mode_stats(handler_input, True)
         PlayerDict.save_player_obj(handler_input, player_obj)
 
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         reprompt = GenQuestions.get_same_question(handler_input)
         card_title = CardFuncs.get_card_title(handler_input)
         card_text = CardFuncs.clean_card_text(speech)   

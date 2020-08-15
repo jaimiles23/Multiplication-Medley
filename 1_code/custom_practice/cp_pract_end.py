@@ -20,7 +20,7 @@ from ask_sdk_core.handler_input import HandlerInput
 
 
 from logs import logger, log_func_name, log_all
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.list_to_speech import get_str_from_list
 from answer_response.congrat_utils import CongratUtils
 
@@ -55,7 +55,7 @@ class CP_PractEnd(object):
     def get_ms_fin_incorrect() -> str:
         """Returns message that user solved all stored incorrect problems."""
         return MW_EXCITED_LOW.format(
-            get_ms_from_tuple(
+            get_linear_nlg(
                 custom_practice.data.MMT_FIN_INCORRECT_PROBLEMS))
 
 
@@ -64,7 +64,7 @@ class CP_PractEnd(object):
     def get_ms_fin_high_err_table() -> str:
         """Returns message that user solved all high error tables."""
         return MW_EXCITED_LOW.format(
-            get_ms_from_tuple(
+            get_linear_nlg(
                 custom_practice.data.MMT_HIGH_ERROR_TABLES))
 
 
@@ -73,7 +73,7 @@ class CP_PractEnd(object):
     def get_ms_fin_high_z_score_table() -> str:
         """Returns message that user solved all high z score tables."""
         return MW_EXCITED_LOW.format(
-            get_ms_from_tuple(
+            get_linear_nlg(
                 custom_practice.data.MMT_HIGH_Z_SCORE_TABLES))
 
 
@@ -82,6 +82,6 @@ class CP_PractEnd(object):
     def get_ms_fin_new_tables() -> str:
         """Returns message that user solved new table problems."""
         return MW_EXCITED_LOW.format(
-            get_ms_from_tuple(
+            get_linear_nlg(
                 custom_practice.data.MMT_NEW_TABLES))
     

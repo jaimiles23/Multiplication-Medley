@@ -20,7 +20,7 @@ import random
 
 
 from logs import log_func_name, logger
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from pause.pauser import Pauser
 
 import speed_challenge.data
@@ -60,7 +60,7 @@ class SC_Difficulty(object):
     @log_func_name
     def h_get_ms_what_difficulty() -> str:
         """Helper method returns prompt asking what difficulty."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             speed_challenge.data.MMT_WHAT_DIFFICULTY)
 
 
@@ -68,7 +68,7 @@ class SC_Difficulty(object):
     @log_func_name
     def get_ms_difficulty_list() -> str:
         """Returns message of list of difficulties user can select."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             speed_challenge.data.MMT_CAN_USE_DIFF)
 
 
@@ -83,7 +83,7 @@ class SC_Difficulty(object):
     @log_func_name
     def get_ms_not_register() -> str:
         """Returns message that did not register user's input."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             speed_challenge.data.MTT_TRY_AGAIN)
 
 

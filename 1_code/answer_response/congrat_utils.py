@@ -30,7 +30,7 @@ from mult_questions.question_attr import QuestionAttr
 from players.players_dict import PlayerDict
 from stats.user_stats import UserStats
 from pause.pauser import Pauser
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 
 from .congrat_level import CongratLevel
 from .confirmation_utils import ConfirmUtils
@@ -98,7 +98,7 @@ class CongratUtils(object):
                 data_congrat.MT_BROKE_INCORRECT_STREAK_1))
                 
         speech_list = (ms_congrats, 1, ms_broke_consecutive_incorrect)
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
@@ -120,7 +120,7 @@ class CongratUtils(object):
                     consecutive_correct))
 
         speech_list = (ms_congrats, 1, ms_consecutive_correct)
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     ##########

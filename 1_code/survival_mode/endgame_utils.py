@@ -27,7 +27,7 @@ from stats.mode_stats import ModeStats
 from players.players_dict import PlayerDict
 from survival_mode.survival_attr import SM_Attr
 from answer_response.congrat_utils import CongratUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 
 import survival_mode.data
 from aux_data.SSML_tags import (
@@ -103,7 +103,7 @@ class SMEndGame(object):
         speech_list.append( random.choice(
             survival_mode.data.MT_QUESTION_SYN))
         
-        ms_new_sm_high_score = get_ms_from_tuple(speech_list)
+        ms_new_sm_high_score = get_linear_nlg(speech_list)
 
         return MW_EXCITED_MED.format(ms_new_sm_high_score)
 

@@ -20,7 +20,7 @@ import random
 
 
 from logs import log_func_name, logger
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from free_play.fp_logic import FreePlayLogic
 from skill_card.card_funcs import CardFuncs
 

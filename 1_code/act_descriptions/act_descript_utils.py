@@ -21,7 +21,7 @@ from ask_sdk_core.handler_input import HandlerInput
 
 
 from logs import logger, log_func_name, log_all
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from helper.help_utils import HelpUtils
 
 
@@ -44,7 +44,7 @@ class DescriptUtils(object):
         """Returns description of the passed activity."""
         master_ms_tuple = data.DESCRIPT_DICT[activity]
         
-        ms_act_descript = get_ms_from_tuple(master_ms_tuple)
+        ms_act_descript = get_linear_nlg(master_ms_tuple)
         return ms_act_descript
 
 
@@ -55,7 +55,7 @@ class DescriptUtils(object):
         
         Triggered if activity slot is not resolved."""
         master_ms_tuple = data.MMT_GEN_DESCRIPT
-        ms_gen_descript = get_ms_from_tuple( master_ms_tuple)
+        ms_gen_descript = get_linear_nlg( master_ms_tuple)
         return ms_gen_descript
 
 
@@ -86,7 +86,7 @@ class DescriptUtils(object):
         if not activity:
             return HelpUtils.get_q_what_todo()
         
-        ms_want_to_play = get_ms_from_tuple( data.MMT_WANT_TO_PLAY)
+        ms_want_to_play = get_linear_nlg( data.MMT_WANT_TO_PLAY)
         activity = aux_data.skill_data.MODE_ACT_DICT[activity]
 
         speech_list = (

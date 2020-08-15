@@ -24,7 +24,7 @@ from logs import logger, log_func_name
 from launch.launch_utils import LaunchUtils
 from pause.pauser import Pauser
 from skill_card.card_funcs import CardFuncs
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 
 
 ##########
@@ -50,7 +50,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
             prompt
         )
 
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         reprompt = LaunchUtils.get_r_appropriate_reprompt(handler_input)
         card_title = CardFuncs.get_card_title(handler_input)
         card_text = CardFuncs.clean_card_text(speech)

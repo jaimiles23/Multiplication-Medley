@@ -31,7 +31,7 @@ from slots.slot_utils import SlotUtils
 from skill_card.card_funcs import CardFuncs
 from aux_utils.last_prompt import LastPrompt
 from helper.help_utils import HelpUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from players.players_dict import PlayerDict
 from stats.mode_speech_utils import ModeSpeech
 
@@ -69,7 +69,7 @@ class ModeStatsHandler(AbstractRequestHandler):
             else:
                 reprompt = ModeSpeech.get_ms_sc_what_difficulty()
                 speech_list += reprompt
-                reprompt = get_ms_from_tuple(reprompt)
+                reprompt = get_linear_nlg(reprompt)
 
         else:
             ms_can_tell_record = ModeSpeech.get_ms_can_tell_record()
@@ -84,7 +84,7 @@ class ModeStatsHandler(AbstractRequestHandler):
             speech_list += Pauser.make_ms_pause_level_list( 3, prompt)
         
 
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         card_title = CardFuncs.get_card_title(handler_input)
         card_text = CardFuncs.clean_card_text(speech)
         return (

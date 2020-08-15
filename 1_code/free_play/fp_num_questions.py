@@ -16,7 +16,7 @@
 import random
 
 from answer_response.congrat_utils import CongratUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.try_saying import get_ms_try_saying
 from logs.log_decorators import log_func_name
 import free_play.data
@@ -40,14 +40,14 @@ class FPNumQuestions(object):
         speech_list.append( random.choice(
             free_play.data.MT_QUESTIONS))
             
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
     @log_func_name
     def get_ms_can_set_num_questions() -> str:
         """Returns message that can set the number of questions."""
-        ms_can_ask = get_ms_from_tuple( free_play.data.MMT_NUM_QUESTIONS)
+        ms_can_ask = get_linear_nlg( free_play.data.MMT_NUM_QUESTIONS)
         return ms_can_ask
 
 
@@ -73,7 +73,7 @@ class FPNumQuestions(object):
         attr = handler_input.attributes_manager.session_attributes
         questions_answered = attr.get('questions_answered', 0)
 
-        ms_answered_qs = get_ms_from_tuple( free_play.data.MMT_ANSWERED_QUESTIONS)
+        ms_answered_qs = get_linear_nlg( free_play.data.MMT_ANSWERED_QUESTIONS)
         ms_answered_qs = ms_answered_qs.format( questions_answered)
         speech_list = (
             ms_answered_qs,

@@ -24,7 +24,7 @@ from ask_sdk_core.handler_input import HandlerInput
 
 
 from logs import logger, log_func_name, log_all
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.list_to_speech import get_str_from_list
 from answer_response.congrat_utils import CongratUtils
 
@@ -57,7 +57,7 @@ class CP_PractIntro(object):
     @log_func_name
     def get_ms_practice_incorrect_problems(handler_input) -> str:
         """Returns message that going to practice incorrect problems."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             custom_practice.data.MMT_INCORRECT_PROBLEMS_IN_DATES)
 
 
@@ -80,7 +80,7 @@ class CP_PractIntro(object):
 
         speech_list = (speech_list_1 + speech_list_2 + 
             CP_PractIntro.get_ms_num_in_row_to_complete())
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
@@ -102,7 +102,7 @@ class CP_PractIntro(object):
 
         speech_list = (speech_list_1 + speech_list_2 + 
             CP_PractIntro.get_ms_num_in_row_to_complete())
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
@@ -115,7 +115,7 @@ class CP_PractIntro(object):
         speech_list.insert(0, ms_congrats)
 
         speech_list += CP_PractIntro.get_ms_num_in_row_to_complete()
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
     
 
     @staticmethod

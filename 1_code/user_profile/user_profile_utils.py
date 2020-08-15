@@ -26,7 +26,7 @@ from ask_sdk_core.utils import is_intent_name, is_request_type
 
 from logs import log_func_name, logger
 from pause.pauser import Pauser
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from launch.launch_utils import LaunchUtils
 
 import user_profile.data
@@ -65,7 +65,7 @@ class UserProfileUtils(object):
    @log_func_name
    def get_ms_did_not_hear_name() -> str:
       """Returns message did not register name input and needs to retry."""
-      return get_ms_from_tuple(
+      return get_linear_nlg(
          user_profile.data.MMT_RETRY_USER_NAME)
    
 

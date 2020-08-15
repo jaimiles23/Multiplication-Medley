@@ -31,7 +31,7 @@ import random
 
 from logs import logger, log_func_name, log_all
 from players.players_dict import PlayerDict
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.try_saying import get_ms_try_saying
 
 import stats.data_speech
@@ -191,7 +191,7 @@ class ModeSpeech(object):
     @log_func_name
     def get_ms_can_tell_record() -> str:
         """Returns message that can tell user statistics."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             stats.data_speech.MMT_CAN_TELL_STATS)
 
 
@@ -206,7 +206,7 @@ class ModeSpeech(object):
         for item in stats.data_speech.MMT_EXAMPLE_RECORDS:
             speech_list.append(item)
         
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
     
 
     ##########

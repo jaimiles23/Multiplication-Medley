@@ -28,7 +28,7 @@ from logs import logger, log_func_name, log_all
 from mult_questions.question_attr import QuestionAttr
 from mult_questions.gen_questions import GenQuestions
 from mult_questions.question_messages import AllQuestionIntros
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from stats.user_stats import UserStats
 from players.players_dict import PlayerDict
 from answer_response.confirmation_utils import ConfirmUtils
@@ -69,7 +69,7 @@ class SMQuestions(object):
       ms_question = GenQuestions.format_question(new_question)
 
       speech_list = ( ms_question_intro, ms_question)
-      return get_ms_from_tuple(speech_list)
+      return get_linear_nlg(speech_list)
 
 
    ##########

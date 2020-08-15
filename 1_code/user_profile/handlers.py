@@ -40,7 +40,7 @@ from exceptions.exception_utils import ExceptionUtils
 from answer_response.confirmation_utils import ConfirmUtils
 from skill_card.card_funcs import CardFuncs
 from pause.pauser import Pauser
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 
 
 ##########
@@ -99,7 +99,7 @@ class CreateUserProfileHandler(AbstractRequestHandler):
                 prompt
             )
         
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         card_title = CardFuncs.get_card_title( handler_input)
         card_text = CardFuncs.clean_card_text( speech)
         return (

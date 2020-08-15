@@ -19,7 +19,7 @@
 import random
 
 from logs import log_func_name, logger
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from skill_card.card_funcs import CardFuncs
 
 
@@ -129,6 +129,6 @@ class CP_Questions(object):
     @log_func_name
     def get_ms_practice_incorrect_problem_more() -> str:
         """Returns message that user needs to practice incorrect problem more."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             mult_questions.data_cp.MMT_PRACTICE_SAME_PROBLEM )
 

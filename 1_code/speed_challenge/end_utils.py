@@ -27,7 +27,7 @@ from ask_sdk_core.handler_input import HandlerInput
 
 from logs import log_func_name, logger, log_all
 from answer_response.congrat_utils import CongratUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.z_score import calc_z_score
 
 import speed_challenge.data
@@ -199,7 +199,7 @@ class SC_EndGame(object):
         master_speech_list = speech_list_1 + speech_list_2
 
         return MW_EXCITED_MED.format(
-            get_ms_from_tuple(master_speech_list))
+            get_linear_nlg(master_speech_list))
     
     
     ########## Tied High Score
@@ -221,7 +221,7 @@ class SC_EndGame(object):
         ms_close_one = random.choice(
             speed_challenge.data.MT_TIE_HS_PART_2)
         return MW_EXCITED_LOW.format(
-            get_ms_from_tuple(
+            get_linear_nlg(
                 [ms_tied_hs, 0.5, ms_close_one]))
     
 

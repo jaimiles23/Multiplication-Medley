@@ -23,7 +23,7 @@ import random
 
 from logs import log_func_name, logger
 from slots.slot_utils import SlotUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.list_to_speech import get_str_from_list
 from aux_utils.try_saying import get_ms_try_saying
 from pause.pauser import Pauser
@@ -59,7 +59,7 @@ class FPTimesTables(object):
             free_play.data.MTT_EXISTING_TABLES,
             times_tables_to_use
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
         
 
     ##########
@@ -114,7 +114,7 @@ class FPTimesTables(object):
             Pauser.get_p_level(1),
             times_tables,
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
@@ -126,7 +126,7 @@ class FPTimesTables(object):
         speech_list = (
             free_play.data.MMT_MISTAKE_PARSING,
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
@@ -141,7 +141,7 @@ class FPTimesTables(object):
             0.75,
             FPTimesTables.get_example_tables_query(),
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     ##########
@@ -155,7 +155,7 @@ class FPTimesTables(object):
         e.g.,
             "I'll ask questions from."
         """
-        return get_ms_from_tuple( free_play.data.MMT_USE_PROBLEMS_START)
+        return get_linear_nlg( free_play.data.MMT_USE_PROBLEMS_START)
 
 
     ##########
@@ -169,7 +169,7 @@ class FPTimesTables(object):
         NOTE: Should add handler_input so can change example b/w prompt & reprompt,
         and depending on num logins, etc.
         """
-        q_what_tables = get_ms_from_tuple( free_play.data.MMT_WHAT_TABLES_PRACTICE)
+        q_what_tables = get_linear_nlg( free_play.data.MMT_WHAT_TABLES_PRACTICE)
         if random.random() < 0.0:       ## TODO: Change chance of prompt.
             ms_example = FPTimesTables.get_example_tables_query()
         else:
@@ -203,7 +203,7 @@ class FPTimesTables(object):
         sample_tables = MW_SLOW3.format(sample_tables)
 
         speech_list += Pauser.make_ms_pause_level_list(1, sample_tables)
-        return MW_SLOW1.format( get_ms_from_tuple( speech_list))
+        return MW_SLOW1.format( get_linear_nlg( speech_list))
 
 
     @staticmethod
@@ -222,7 +222,7 @@ class FPTimesTables(object):
             free_play.data.MT_TIMES_TABLES,
             ms_range,
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     ##########
@@ -241,21 +241,21 @@ class FPTimesTables(object):
             ms_tables,
             free_play.data.MT_TO_PRACTICE
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
     @log_func_name
     def get_ms_can_add_tables() -> str:
         """Returns message that can add tables."""
-        ms_can_add_tables = get_ms_from_tuple(free_play.data.MMT_CAN_ADD_TIMES_TABLES)
+        ms_can_add_tables = get_linear_nlg(free_play.data.MMT_CAN_ADD_TIMES_TABLES)
         ms_add_table_example = FPTimesTables.get_ms_add_table_example()
 
         speech_list = (
             ms_can_add_tables,
             2,
             ms_add_table_example)
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
@@ -270,7 +270,7 @@ class FPTimesTables(object):
         
         speech_list = (
             get_ms_try_saying(),
-            get_ms_from_tuple(free_play.data.MMT_EXAMPLE_ADD_TIMES_TABLES),
+            get_linear_nlg(free_play.data.MMT_EXAMPLE_ADD_TIMES_TABLES),
             ' and '.join(random_nums),
         )
         return ' '.join(speech_list)

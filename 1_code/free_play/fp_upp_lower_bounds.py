@@ -18,7 +18,7 @@ import random
 
 from logs import log_func_name, logger
 from slots.slot_utils import SlotUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.list_to_speech import get_str_from_list
 from aux_utils.try_saying import get_ms_try_saying
 from pause.pauser import Pauser
@@ -91,7 +91,7 @@ class FPUpperLowerBounds(object):
             free_play.data.MS_CHANGE_UPPER_LOW_BOUNDS,
             free_play.data.MT_QUESTIONS,
             ]
-        return get_ms_from_tuple( speech_list)
+        return get_linear_nlg( speech_list)
 
 
     @staticmethod
@@ -119,5 +119,5 @@ class FPUpperLowerBounds(object):
             2,
             ms_bound_effect,
         )
-        return get_ms_from_tuple( speech_list)
+        return get_linear_nlg( speech_list)
 

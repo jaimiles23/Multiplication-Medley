@@ -21,7 +21,7 @@ import random
 from logs import logger, log_func_name
 from pause.pauser import Pauser
 from skill_card.card_funcs import CardFuncs
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.list_to_speech import get_str_from_list
 from aux_utils.try_saying import get_ms_try_saying
 from free_play.fp_timestables import FPTimesTables
@@ -77,7 +77,7 @@ class HelpUtils(object):
     @log_func_name
     def get_ms_help_overview() -> str:
         """Returns help message for overview of skill."""
-        ms_help_overview = get_ms_from_tuple( helper.data.MT_HELP_OVERVIEW)
+        ms_help_overview = get_linear_nlg( helper.data.MT_HELP_OVERVIEW)
         ms_skill_acts = HelpUtils.get_skill_acts()
 
         speech_list = (
@@ -87,14 +87,14 @@ class HelpUtils(object):
             2.25,
             act_descriptions.data.MS_START_OR_ASK
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
 
 
     @staticmethod
     @log_func_name
     def get_ms_user_profile() -> str:
         """Returns help message for user profile."""
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             helper.data.MT_HELP_USER_PROFILE)
 
 
@@ -103,7 +103,7 @@ class HelpUtils(object):
     def get_ms_act_descript() -> str:
         """Returns help message for activity description."""
         master_ms_tuple = act_descriptions.data.MMT_GEN_DESCRIPT
-        ms_gen_descript = get_ms_from_tuple( master_ms_tuple)
+        ms_gen_descript = get_linear_nlg( master_ms_tuple)
         return ms_gen_descript
 
 
@@ -141,21 +141,21 @@ class HelpUtils(object):
     @staticmethod
     @log_func_name
     def get_ms_custom_practice() -> str:
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             helper.data.MMT_CUSTOM_PRACTICE)
     
     
     @staticmethod
     @log_func_name
     def get_ms_survival_mode() -> str:
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             helper.data.MTT_SURVIVAL_MODE)
     
 
     @staticmethod
     @log_func_name
     def get_ms_speed_challenge() -> str:
-        return get_ms_from_tuple(
+        return get_linear_nlg(
             helper.data.MMT_SPEED_CHALLENGE)
     
 

@@ -29,7 +29,7 @@ from ask_sdk_model.ui import SimpleCard
 
 from logs import logger, log_func_name
 from skill_card.card_funcs import CardFuncs
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 import exceptions.data as data
 
 

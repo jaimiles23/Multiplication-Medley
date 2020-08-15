@@ -22,7 +22,7 @@ import random
 
 from logs import log_func_name, logger
 from slots.slot_utils import SlotUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from aux_utils.list_to_speech import get_str_from_list
 from aux_utils.try_saying import get_ms_try_saying
 from pause.pauser import Pauser
@@ -71,7 +71,7 @@ class FPSpeech(object):
             free_play.data.MT_PROBLEM_SYNS,
             free_play.data.MT_REQUESTED,
         )
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
     
 
     ##########
@@ -120,5 +120,5 @@ class FPSpeech(object):
     @log_func_name
     def get_ms_stop_fp() -> str:
         """Returns message done playing free_play."""
-        return get_ms_from_tuple( free_play.data.MMT_STOP_FP)
+        return get_linear_nlg( free_play.data.MMT_STOP_FP)
 

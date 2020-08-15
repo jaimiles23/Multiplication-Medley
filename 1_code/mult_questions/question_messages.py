@@ -22,7 +22,7 @@
 import random
 
 from logs import logger, log_func_name
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from pause.pauser import Pauser
 
 from mult_questions.gen_questions import GenQuestions
@@ -42,7 +42,7 @@ class AllQuestionIntros(object):
     @log_func_name
     def get_first_question_intro() -> str:
         """Returns introduction for the first free play question asked."""        
-        return get_ms_from_tuple( 
+        return get_linear_nlg( 
             mult_questions.data.MMT_FIRST_QUESTION) + "."
 
 
@@ -69,7 +69,7 @@ class AllQuestionIntros(object):
         """Returns message with the question number."""
         attr = handler_input.attributes_manager.session_attributes
         speech_list = []
-        ms_num_question = get_ms_from_tuple(mult_questions.data.MMT_PROBLEM_NUM)
+        ms_num_question = get_linear_nlg(mult_questions.data.MMT_PROBLEM_NUM)
         questions_answered = attr['questions_answered'] + 1
 
         speech_list.append( ms_num_question)

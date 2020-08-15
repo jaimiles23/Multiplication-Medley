@@ -36,7 +36,7 @@ from skill_card.card_funcs import CardFuncs
 from aux_utils.last_prompt import LastPrompt
 from helper.help_utils import HelpUtils
 from fallback.fallback_utils import FallbackUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from players.players_dict import PlayerDict
 from aux_utils.thanks import get_ms_thanks
 
@@ -198,7 +198,7 @@ class SM_WrongAnswerHandler(AbstractRequestHandler):
         SM_Attr.set_attr_end_survival_mode(handler_input)
         ModeStats.translate_mode_stats_to_sesh(handler_input)
         
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         card_title = CardFuncs.get_card_title(handler_input)
         card_text = CardFuncs.clean_card_text(speech)   
         return (

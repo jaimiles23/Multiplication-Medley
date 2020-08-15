@@ -12,7 +12,7 @@
 ##########
 
 from logs import logger, log_func_name
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 
 from mult_questions.question_attr import QuestionAttr
 from slots.slot_utils import SlotUtils
@@ -48,7 +48,7 @@ class GetAnswerSpeech(object):
                 user_answer)
             speech_list.append(ms_ans)
             
-        return get_ms_from_tuple(speech_list)
+        return get_linear_nlg(speech_list)
         
 
 

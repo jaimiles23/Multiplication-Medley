@@ -33,7 +33,7 @@ from slots.slot_utils import SlotUtils
 from skill_card.card_funcs import CardFuncs
 from aux_utils.last_prompt import LastPrompt
 from helper.help_utils import HelpUtils
-from aux_utils.create_tuple_message_clauses import get_ms_from_tuple
+from aux_utils.create_tuple_message_clauses import get_linear_nlg
 from players.players_dict import PlayerDict
 from check_answer.question_checker import QuestionChecker
 from check_answer.record_wrong import WrongAnswer
@@ -292,7 +292,7 @@ class SC_FinishedChallengeHandler(AbstractRequestHandler):
         SC_Attr.set_attr_end_sc(handler_input)
         PlayerDict.save_player_obj(handler_input, player_obj)
 
-        speech = get_ms_from_tuple(speech_list)
+        speech = get_linear_nlg(speech_list)
         card_title = CardFuncs.get_card_title(handler_input)
         card_text = CardFuncs.clean_card_text(speech)   
         return (
