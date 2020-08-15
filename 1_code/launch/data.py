@@ -47,5 +47,5 @@ MTT_FIRST_PLAYER_NAME = (
 )
 
 
-MS_FIRST_PLAY_NAME_REPROMPT = """Tell me your name so I can make a profile."""
+MS_FIRST_PLAY_NAME_REPROMPT = """Tell me your name so I can make you a profile."""
 
