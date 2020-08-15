@@ -68,7 +68,8 @@ from free_play.handlers import (
     FP_SetNumberQuestionsHandler,
     FP_SetTableBoundsHandler,
     FP_ParametersHandler,
-    FP_AnswerQuestionHandler,
+    FP_CorrectAnswerHandler,
+    FP_WrongAnswerHandler,
     FP_AnsweredRequestedQuestionsHandler,
 )
 from custom_practice.handlers import (
