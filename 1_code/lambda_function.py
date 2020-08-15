@@ -29,7 +29,7 @@ from ask_sdk_s3.adapter import S3Adapter
 
 skill_s3_client = boto3.client('s3')
 skill_bucket_name = os.environ['bucket_name']
-skill_prefix = "mem/"
+skill_prefix = "users/"
 
 skill_s3_adapter = S3Adapter(
     bucket_name = skill_bucket_name,
