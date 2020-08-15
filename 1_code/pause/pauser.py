@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-04 23:55:13
- * @modify date 2020-05-20 22:13:12
+ * @modify date 2020-08-15 15:18:59
  * @desc [
     Pauser utility class. Methods for:
     - Make pause level list
@@ -10,6 +10,7 @@
 
 ]
 */"""
+
 
 ##########
 # Imports
@@ -38,6 +39,8 @@ class Pauser(object):
         """Returns list of the arguments to be added to speech_list.
 
         Transforms all int/float args into p_levels then adds to the list.
+        NOTE: This function is useful to preserve list format so
+        the str.join method only has to operate once.
         """
         logger.debug(f"make_ms_pause_level_list: args {args}")
         speech_list = []
