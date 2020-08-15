@@ -128,7 +128,8 @@ SKILL_REQUEST_HANDLERS = (
     FP_SetTableBoundsHandler,
     FP_ParametersHandler,
     FP_AnsweredRequestedQuestionsHandler,
-    FP_AnswerQuestionHandler,
+    FP_CorrectAnswerHandler,
+    FP_WrongAnswerHandler,
 
     ## CP
     CP_StartHandler,
