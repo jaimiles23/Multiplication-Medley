@@ -37,6 +37,16 @@ class CardFuncs(object):
 
     @staticmethod
     @log_func_name
+    def get_card_info(handler_input, speech: str) -> (str, str):
+        """Returns tuple of (card_title, card_text) for skill card."""
+        card_title = CardFuncs.get_card_title(handler_input)
+        card_text = CardFuncs.clean_card_text(speech)
+        
+        return (card_title, card_text)
+        
+
+    @staticmethod
+    @log_func_name
     def get_card_title(handler_input) -> str:
         """Returns the card title for the select activity.
         """

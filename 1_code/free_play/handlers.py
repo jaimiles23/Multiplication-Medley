@@ -505,8 +505,8 @@ class FP_AnsweredRequestedQuestionsHandler(AbstractRequestHandler):
       FreePlayAttr.set_attr_end_fp(handler_input)
 
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title(handler_input)
-      card_text = CardFuncs.clean_card_text(speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
+      
       return (
          handler_input.response_builder
             .speak(speech)
