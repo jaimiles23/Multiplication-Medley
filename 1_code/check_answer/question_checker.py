@@ -33,7 +33,9 @@ class QuestionChecker(object):
         answer = SlotUtils.get_slot_val_by_name(handler_input, 'answer')
         
         if not answer:
-            logger.warning("check_answer: No answer found.")
+            logger.error("check_answer: No answer found.")
+            ## NOTE: if this error is being thrown, need to incorporate 
+            ## FallbackUtils.return_unknown_slot_response()
             return False
 
         return (table_1 * table_2 == int(answer))

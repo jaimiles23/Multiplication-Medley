@@ -49,6 +49,7 @@ class GetAnswerHandler(AbstractRequestHandler):
         ms_answer = GetAnswerSpeech.get_ms_answer(handler_input)
         next_question = FPQuestions.get_question(handler_input)
         QuestionAttr.increment_questions_answered(handler_input, False) # undo increment.
+        ## NOTE: would not need to de-increment with better modulation.
 
         speech_list += Pauser.make_ms_pause_level_list(
             ms_answer, 2, next_question)

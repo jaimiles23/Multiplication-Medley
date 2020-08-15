@@ -41,7 +41,10 @@ class FallbackUtils(object):
     @staticmethod
     @log_func_name
     def return_unknown_slot_response(handler_input) -> object:
-        """Returns response with output that didn't understand user's slot input."""
+        """If cannot find answer slot, returns same response prompt.
+        
+        NOTE: Can probably just return last response object.
+        """
         speech_list = []
         attr = handler_input.attributes_manager.session_attributes
         
@@ -73,7 +76,7 @@ class FallbackUtils(object):
         """May like to have a function that resets session attributes
         to clean any logic issues??
         
-        Note: would definitely need to svae & reload player objs...
+        Note: Will need to save & reload player objs.
         """
         pass
 
