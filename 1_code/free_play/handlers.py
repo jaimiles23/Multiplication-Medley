@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-07 23:09:05
- * @modify date 2020-05-25 16:27:16
+ * @modify date 2020-08-15 14:37:17
  * @desc [
    Contains handlers for the Free_Play mode:
    - Start
@@ -134,8 +134,7 @@ class FP_StartHandler(AbstractRequestHandler):
       ModeStats.translate_mode_stats_to_sesh(handler_input)
 
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title(handler_input)
-      card_text = CardFuncs.clean_card_text(speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
       return (
          handler_input.response_builder
             .speak(speech)
@@ -200,8 +199,7 @@ class FP_SetTimesTablesHandler(AbstractRequestHandler):
       ModeStats.translate_mode_stats_to_sesh(handler_input)
 
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title(handler_input)
-      card_text = CardFuncs.clean_card_text(speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
       return (
          handler_input.response_builder
             .speak( speech)
@@ -251,8 +249,7 @@ class FP_AddTimesTablesHandler(AbstractRequestHandler):
       ModeStats.translate_mode_stats_to_sesh(handler_input)
       
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title(handler_input)
-      card_text = CardFuncs.clean_card_text(speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
       return (
          handler_input.response_builder
             .speak(speech)
@@ -292,8 +289,7 @@ class FP_SetNumberQuestionsHandler(AbstractRequestHandler):
       ModeStats.translate_mode_stats_to_sesh(handler_input)
 
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title( handler_input)
-      card_text = CardFuncs.clean_card_text( speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
       return (
          handler_input.response_builder
             .speak(speech)
@@ -337,8 +333,7 @@ class FP_SetTableBoundsHandler(AbstractRequestHandler):
       ModeStats.translate_mode_stats_to_sesh(handler_input)
 
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title(handler_input)
-      card_text = CardFuncs.clean_card_text(speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
       return (
          handler_input.response_builder
             .speak(speech)
@@ -369,8 +364,7 @@ class FP_ParametersHandler(AbstractRequestHandler):
          ms_confirm, 1, ms_fp_params, 2.5, prompt)
       
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title(handler_input)
-      card_text = CardFuncs.clean_card_text(speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
       return (
          handler_input.response_builder
             .speak(speech)
@@ -418,8 +412,7 @@ class FP_CorrectAnswerHandler(AbstractRequestHandler):
 
       logger.debug(speech_list)
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title(handler_input)
-      card_text = CardFuncs.clean_card_text(speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
       return (
          handler_input.response_builder
             .speak(speech)
@@ -458,8 +451,7 @@ class FP_WrongAnswerHandler(AbstractRequestHandler):
 
       logger.debug(speech_list)
       speech = ' '.join(speech_list)
-      card_title = CardFuncs.get_card_title(handler_input)
-      card_text = CardFuncs.clean_card_text(speech)
+      card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
       return (
          handler_input.response_builder
             .speak(speech)

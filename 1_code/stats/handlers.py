@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-20 13:17:50
- * @modify date 2020-05-23 00:35:49
+ * @modify date 2020-08-15 14:38:03
  * @desc [
     Handlers for mode statistics.
     - ModeStatsHandler
@@ -85,8 +85,7 @@ class ModeStatsHandler(AbstractRequestHandler):
         
 
         speech = get_linear_nlg(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak(speech)

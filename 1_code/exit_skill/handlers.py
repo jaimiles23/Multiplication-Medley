@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-05 14:14:31
- * @modify date 2020-05-26 10:05:18
+ * @modify date 2020-08-15 14:37:26
  * @desc [
      Handlers for exiting the skill:
      - Exit
@@ -67,8 +67,7 @@ class ExitHandler(AbstractRequestHandler):
         speech_list.append( ms_exit)
 
         speech = ' '.join( speech_list)
-        card_title = CardFuncs.get_card_title( handler_input)
-        card_text = CardFuncs.clean_card_text( speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
 
         ## Attr management @ very end.
         ExitUtils.update_player_mode_statistics(handler_input, player_obj)
@@ -116,7 +115,7 @@ class StopActivity(AbstractRequestHandler):
             is_intent_name("StopActivityIntent")(handler_input) and 
             (attr.get('mode', None) in aux_data.skill_data.MODE_ACT_DICT.keys())
             )
-      
+    
     def handle(self, handler_input):
         speech_list = []
         
@@ -135,8 +134,7 @@ class StopActivity(AbstractRequestHandler):
         SC_Attr.set_attr_end_sc(handler_input)
         
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
             .speak(speech)

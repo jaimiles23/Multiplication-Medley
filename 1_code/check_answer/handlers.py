@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-14 10:51:47
- * @modify date 2020-05-14 10:51:47
+ * @modify date 2020-08-15 14:37:36
  * @desc [
     Handler class to tell user the answer.
     Only accessible in free_play and custom mode.
@@ -56,8 +56,7 @@ class GetAnswerHandler(AbstractRequestHandler):
         reprompt = next_question
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak(speech)

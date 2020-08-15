@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-17 14:52:34
- * @modify date 2020-05-20 12:32:57
+ * @modify date 2020-08-15 14:38:25
  * @desc [
     Contains handler for non-mode specific intents related to questions:
         - NumQuestionsAnsweredHandler
@@ -60,8 +60,7 @@ class NumQuestionsAnsweredHandler(AbstractRequestHandler):
         speech_list += Pauser.make_ms_pause_level_list( ms_confirm, 1, ms_ans_questions, 2, prompt)
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak(speech)

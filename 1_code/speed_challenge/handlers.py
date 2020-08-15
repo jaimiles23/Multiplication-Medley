@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-20 22:46:14
- * @modify date 2020-05-22 23:35:28
+ * @modify date 2020-08-15 14:38:09
  * @desc [
     Handlers for speed challenge:
     - Start
@@ -100,8 +100,7 @@ class SC_StartHandler(AbstractRequestHandler):
 
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)
@@ -152,8 +151,7 @@ class SC_DifficultySetupHandler(AbstractRequestHandler):
             SC_Attr.save_start_time(handler_input)
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)
@@ -189,8 +187,7 @@ class SC_CorrectAnswerHandler(AbstractRequestHandler):
         ModeStats.update_mode_stats(handler_input, correct= True)
 
         speech = question
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)
@@ -228,8 +225,7 @@ class SC_WrongAnswerHandler(AbstractRequestHandler):
         WrongAnswer.record_wrong_question(handler_input)
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)
@@ -293,8 +289,7 @@ class SC_FinishedChallengeHandler(AbstractRequestHandler):
         PlayerDict.save_player_obj(handler_input, player_obj)
 
         speech = get_linear_nlg(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)

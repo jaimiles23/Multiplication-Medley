@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-23 10:28:10
- * @modify date 2020-06-16 17:18:00
+ * @modify date 2020-08-15 14:37:28
  * @desc [
     Handlers for Custom Practice.
     - Start CP
@@ -115,8 +115,7 @@ class CP_StartHandler(AbstractRequestHandler):
 
         speech = get_linear_nlg(speech_list)
         reprompt = GenQuestions.get_same_question(handler_input)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)
@@ -170,8 +169,7 @@ class CP_CorrectAnswerHandler(AbstractRequestHandler):
 
         speech = get_linear_nlg(speech_list)
         reprompt = GenQuestions.get_same_question(handler_input)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)
@@ -214,8 +212,7 @@ class CP_WrongAnswerHandler(AbstractRequestHandler):
 
         speech = get_linear_nlg(speech_list)
         reprompt = GenQuestions.get_same_question(handler_input)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)
@@ -301,8 +298,7 @@ class CP_NextPracticeHandler(AbstractRequestHandler):
 
         speech = get_linear_nlg(speech_list)
         reprompt = GenQuestions.get_same_question(handler_input)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)

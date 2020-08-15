@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-27 12:01:03
- * @modify date 2020-05-27 12:14:23
+ * @modify date 2020-08-15 14:38:20
  * @desc [
     Handler for AMAZON.NoIntent
  ]
@@ -51,8 +51,7 @@ class NoHandler(AbstractRequestHandler):
             prompt
         )
         speech = get_linear_nlg(speech_list)
-        card_title = CardFuncs.get_card_title( handler_input)
-        card_text = CardFuncs.clean_card_text( speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak(speech)

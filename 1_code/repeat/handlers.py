@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-05 15:09:25
- * @modify date 2020-05-06 10:37:05
+ * @modify date 2020-08-15 14:38:16
  * @desc [
     RepeatHandler to return last response.
  ]
@@ -60,8 +60,7 @@ class RepeatHandler(AbstractRequestHandler):
         speech_list.append( ms_prompt)
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title( handler_input)
-        card_text = CardFuncs.clean_card_text( speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak( speech)

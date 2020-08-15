@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-05 09:08:15
- * @modify date 2020-05-07 11:20:32
+ * @modify date 2020-08-15 14:37:13
  * @desc [
      LaunchRequestHandler 
 ]
@@ -52,8 +52,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
         speech = get_linear_nlg(speech_list)
         reprompt = LaunchUtils.get_r_appropriate_reprompt(handler_input)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
 
         LaunchUtils.set_launch_attr(handler_input)
         return (

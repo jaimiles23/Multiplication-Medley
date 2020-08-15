@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-05 12:43:22
- * @modify date 2020-06-16 18:05:17
+ * @modify date 2020-08-15 14:37:10
  * @desc [
     Help Handler to return help message to the user.
  ]
@@ -47,8 +47,8 @@ class HelpHandler(AbstractRequestHandler):
         speech_list += Pauser.make_ms_pause_level_list( ms_help, 3, prompt)
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title( handler_input)
-        card_text = CardFuncs.clean_card_text( speech)
+        
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak(speech)

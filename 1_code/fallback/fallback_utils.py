@@ -58,8 +58,7 @@ class FallbackUtils(object):
             ms_not_understand, 2, prompt)
         
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak(speech)

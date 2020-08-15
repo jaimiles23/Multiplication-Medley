@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-06 11:04:40
- * @modify date 2020-06-07 14:10:21
+ * @modify date 2020-08-15 14:37:53
  * @desc [
     Handlers for the user profiles.
     - Create user profiles.
@@ -100,8 +100,7 @@ class CreateUserProfileHandler(AbstractRequestHandler):
             )
         
         speech = get_linear_nlg(speech_list)
-        card_title = CardFuncs.get_card_title( handler_input)
-        card_text = CardFuncs.clean_card_text( speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak(speech)

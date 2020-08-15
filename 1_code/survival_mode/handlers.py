@@ -2,7 +2,7 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-18 09:56:46
- * @modify date 2020-05-27 12:24:50
+ * @modify date 2020-08-15 14:37:58
  * @desc [
     Handlers for Survival Mode.
     - Start
@@ -87,8 +87,7 @@ class SM_StartHandler(AbstractRequestHandler):
             ms_welcome, 2, ms_question)
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak( speech)
@@ -136,8 +135,7 @@ class SM_CorrectAnswerHandler(AbstractRequestHandler):
         ModeStats.update_mode_stats(handler_input, True)
 
         speech = ' '.join(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)
         return (
             handler_input.response_builder
                 .speak(speech)
@@ -199,8 +197,7 @@ class SM_WrongAnswerHandler(AbstractRequestHandler):
         ModeStats.translate_mode_stats_to_sesh(handler_input)
         
         speech = get_linear_nlg(speech_list)
-        card_title = CardFuncs.get_card_title(handler_input)
-        card_text = CardFuncs.clean_card_text(speech)   
+        card_title, card_text = CardFuncs.get_card_info(handler_input, speech)   
         return (
             handler_input.response_builder
                 .speak(speech)
