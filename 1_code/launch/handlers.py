@@ -40,8 +40,8 @@ class LaunchRequestHandler(AbstractRequestHandler):
         logger.info("HAN    LaunchRequestHandler")
         speech_list = []
 
-        ms_welcome = LaunchUtils.get_appropriate_welcome(handler_input)
-        prompt = LaunchUtils.get_q_appropriate_prompt(handler_input)
+        ms_welcome = LaunchUtils.get_welcome(handler_input)
+        prompt = LaunchUtils.get_q_prompt(handler_input)
         prompt = CardFuncs.format_prompt(prompt)
 
         speech_list = (

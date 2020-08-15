@@ -41,7 +41,7 @@ class LaunchUtils(object):
     ##########
     @staticmethod
     @log_func_name
-    def get_appropriate_welcome(handler_input) -> str:
+    def get_welcome(handler_input) -> str:
         """Determines & calls the appropriate welcome function."""
         attr = handler_input.attributes_manager.session_attributes
         current_player = attr.get('current_player', None)
@@ -98,7 +98,7 @@ class LaunchUtils(object):
     ##########
     @staticmethod
     @log_func_name
-    def get_q_appropriate_prompt(handler_input) -> str:
+    def get_q_prompt(handler_input) -> str:
         """Determines & returns appropriate question prompt for the user."""
         attr = handler_input.attributes_manager.session_attributes
         current_player = attr.get('current_player', None)
@@ -132,10 +132,10 @@ class LaunchUtils(object):
         q_todo = HelpUtils.get_q_what_todo()
         speech_list = (
             ms_overview,
-            Pauser.get_p_level(1),
+            1,
             q_todo
         )
-        return ' '.join(speech_list)
+        return get_ms_from_tuple(speech_list)
 
 
     @staticmethod
