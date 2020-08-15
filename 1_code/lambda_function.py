@@ -2,12 +2,17 @@
  * @author [Jai Miles]
  * @email [jaimiles23@gmail.com]
  * @create date 2020-05-04 16:01:37
- * @modify date 2020-05-24 12:56:13
+ * @modify date 2020-08-15 13:10:50
  * @desc [
     Lambda function & Handler for Multiplication Medley skill.
     - Sets up S3 adapter
     - Imports handlers and interceptors
     - Adds request handlers to lambda function.
+
+    NOTE: Handler's can_handle logic is checked sequentially. Thus, the order
+    that request_handlers are added to the skill builder is important. 
+    e.g., FallbackHandler must be added last. 
+    There are similar order restrictions within skill activities.
 ]*/
 """
 
