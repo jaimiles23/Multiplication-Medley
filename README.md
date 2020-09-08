@@ -1,4 +1,24 @@
+![](https://i.imgur.com/HGvz2s5.jpg)
+
 # Multiplication Medley
+
+- [Multiplication Medley](#multiplication-medley)
+  - [About](#about)
+  - [Directory](#directory)
+    - [1_code navigation](#1_code-navigation)
+  - [Skill activities](#skill-activities)
+    - [Free play](#free-play)
+    - [Custom practice](#custom-practice)
+    - [Survival mode](#survival-mode)
+    - [Speed challenge](#speed-challenge)
+  - [Voice User Interface](#voice-user-interface)
+    - [Natural language understanding](#natural-language-understanding)
+    - [Natural language generation](#natural-language-generation)
+  - [Major changes to implement](#major-changes-to-implement)
+    - [Re-structure wrong_quest_by_date dict.](#re-structure-wrong_quest_by_date-dict)
+    - [Create, change, and delete user profiles](#create-change-and-delete-user-profiles)
+
+## About
 Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and play 4 different multiplication activities:
 1. Free Play
 2. Custom Practice
