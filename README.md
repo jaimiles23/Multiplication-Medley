@@ -244,7 +244,3 @@ Currently, users are only prompted to create a user profile during the initial l
 
 <br>
 <b> <a href = "#multiplication-medley"> :arrow_up: Table of Contents </a></b>
-<br>
-<br>
-
-
