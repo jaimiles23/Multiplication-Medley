@@ -5,7 +5,6 @@
 - [Multiplication Medley](#multiplication-medley)
   - [About](#about)
   - [Directory](#directory)
-    - [1_code navigation](#1_code-navigation)
   - [Skill activities](#skill-activities)
     - [Free play](#free-play)
     - [Custom practice](#custom-practice)
@@ -27,6 +26,10 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 
 [Link to Multiplication Medley in Amazon Marketplace.](https://www.amazon.com/jaimiles23-Multiplication-Medley/dp/B0899VVC7M/ref=sr_1_1?dchild=1&keywords=multiplication+medley&qid=1592459984&s=digital-skills&sr=1-1)
 
+<br>
+<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<br>
+<br>
 
 ## Directory
 
@@ -40,9 +43,13 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
   - Documents pertaining to the distribution of the skill in the [Amazon Marketplace.](https://www.amazon.com/jaimiles23-Multiplication-Medley/dp/B0899VVC7M/ref=sr_1_1?dchild=1&keywords=multiplication+medley&qid=1592459984&s=digital-skills&sr=1-1)
 
 
-### 1_code navigation
+** Navigating 1_code**
 Application code is deployed via AWS Lambda. A user Alexa request triggers the lambda function which accesses the skill builder stored in the `lambda_function.py` file. The skill builder selects the appropriate handler to process the user's request.
 
+<br>
+<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<br>
+<br>
 
 ## Skill activities
 
@@ -78,6 +85,11 @@ Speed mode tracks how quickly the user can complete a series of multiplication q
 |   Insane    |   20  |   30    |
 
 Users answer a number of questions sampled from the range. Time is tracked from the beginning of the mode until the user answers the last problem.
+
+<br>
+<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<br>
+<br>
 
 
 ## Voice User Interface
@@ -152,6 +164,10 @@ This NLG method requires careful consideration of sentence structure and semanti
 
 Data for each NLG method is located in each subdirectory's `data` module.
 
+<br>
+<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<br>
+<br>
 
 ## Major changes to implement
 ![](https://user-images.githubusercontent.com/50056791/87263220-52ef8980-c471-11ea-92f0-a5d1ac830eda.gif)
