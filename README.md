@@ -241,3 +241,8 @@ The `wrong_quest_by_date` dictionary is stored as session attribute (i.e., JSON 
 
 ### Create, change, and delete user profiles
 Currently, users are only prompted to create a user profile during the initial launch of the skill. There are no options to change between profiles, delete existing profiles, or corresponding help menus for creating a new profile. These features need to be implemented in the user_profile library.
+
+<br>
+<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<br>
+<br>
