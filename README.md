@@ -27,7 +27,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 [Link to Multiplication Medley in Amazon Marketplace.](https://www.amazon.com/jaimiles23-Multiplication-Medley/dp/B0899VVC7M/ref=sr_1_1?dchild=1&keywords=multiplication+medley&qid=1592459984&s=digital-skills&sr=1-1)
 
 <br>
-<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<b> <a href = "#multiplication-medley"> :arrow_up: Table of Contents </a></b>
 <br>
 <br>
 
@@ -47,7 +47,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
 Application code is deployed via AWS Lambda. A user Alexa request triggers the lambda function which accesses the skill builder stored in the `lambda_function.py` file. The skill builder selects the appropriate handler to process the user's request.
 
 <br>
-<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<b> <a href = "#multiplication-medley"> :arrow_up: Table of Contents </a></b>
 <br>
 <br>
 
@@ -87,7 +87,7 @@ Speed mode tracks how quickly the user can complete a series of multiplication q
 Users answer a number of questions sampled from the range. Time is tracked from the beginning of the mode until the user answers the last problem.
 
 <br>
-<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<b> <a href = "#multiplication-medley"> :arrow_up: Table of Contents </a></b>
 <br>
 <br>
 
@@ -165,7 +165,7 @@ This NLG method requires careful consideration of sentence structure and semanti
 Data for each NLG method is located in each subdirectory's `data` module.
 
 <br>
-<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<b> <a href = "#multiplication-medley"> :arrow_up: Table of Contents </a></b>
 <br>
 <br>
 
@@ -243,6 +243,8 @@ The `wrong_quest_by_date` dictionary is stored as session attribute (i.e., JSON 
 Currently, users are only prompted to create a user profile during the initial launch of the skill. There are no options to change between profiles, delete existing profiles, or corresponding help menus for creating a new profile. These features need to be implemented in the user_profile library.
 
 <br>
-<b> <a href = "#multiplication-medley"> ToC &#8593; </a></b>
+<b> <a href = "#multiplication-medley"> :arrow_up: Table of Contents </a></b>
 <br>
 <br>
+
+
