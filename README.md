@@ -43,7 +43,7 @@ Multiplication Medley is an educational Alexa skill that helps users practice th
   - Documents pertaining to the distribution of the skill in the [Amazon Marketplace.](https://www.amazon.com/jaimiles23-Multiplication-Medley/dp/B0899VVC7M/ref=sr_1_1?dchild=1&keywords=multiplication+medley&qid=1592459984&s=digital-skills&sr=1-1)
 
 
-** Navigating 1_code**
+*Navigating 1_code*
 Application code is deployed via AWS Lambda. A user Alexa request triggers the lambda function which accesses the skill builder stored in the `lambda_function.py` file. The skill builder selects the appropriate handler to process the user's request.
 
 <br>
