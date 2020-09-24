@@ -54,7 +54,7 @@ Application code is deployed via AWS Lambda. A user Alexa request triggers the l
 ## Skill activities
 
 ### Free play
-Users practice set up the multiplication tables they want to practice. They select:
+Users set up the multiplication tables they want to practice. They select:
 - the tables to answer questions from
 - an upper and lower limit for their tables (optional)
 - a number of questions to practice (optional)
@@ -65,7 +65,7 @@ Multiplication Medley designs a customized practice for the user based on their 
   1. *Recent errors*: users correct recent errors
   2. *High error tables*: users practice tables with more mistakes than an accepted threshold
   3. *High relative errors*: users practice tables they mess up more often than others (a)
-  4. *New tables*: times tables above the user's average difficulty
+  4. *New tables*: users learn stimes tables above their average table difficulty
 
 (a) To determine high relative errors, individual multiplication table errors are standardized into z-scores and users are asked tables with high mistake z-scores.
 
@@ -104,7 +104,7 @@ Skills train Alexa's neural net to assign user utterances to specific intents. T
 1. Slots
 1. Sample Utterances
 
-Intent slots represent specific information for the specified intent. For instance, if the user wants to start Speed Challenge on easy difficulty, they must
+Intent slots represent specific information for the specified intent. For instance, if the user wants to start Speed Challenge on easy difficulty, they can
 provide the 'easy' slot in their intent. A sample utterance follows:
 > "Start Speed Challenge on easy difficulty."
 
