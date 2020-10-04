@@ -17,6 +17,8 @@
     - [Re-structure wrong_quest_by_date dict.](#re-structure-wrong_quest_by_date-dict)
     - [Create, change, and delete user profiles](#create-change-and-delete-user-profiles)
 
+---
+
 ## About
 Multiplication Medley is an educational Alexa skill that helps users practice their times tables. Users create a profile and play 4 different multiplication activities:
 1. Free Play
